@@ -2,11 +2,12 @@
 
 import React, { useState, useRef, ChangeEvent, FormEvent } from 'react'
 import {
-  BookingFormData,
-  BookingValidationErrors,
-  validateBookingData,
-  submitBookingAppointment,
-  AVAILABLE_SERVICES,
+  ConsultationFormData,
+  ConsultationValidationErrors,
+  validateConsultationData,
+  submitConsultationBooking,
+  FUNDING_SERVICES,
+  CAPITAL_RANGES,
 } from '@/lib/bookingAction'
 import styles from './BookingForm.module.css'
 
@@ -15,23 +16,24 @@ interface BookingFormProps {
 }
 
 export default function BookingForm({ onSuccess }: BookingFormProps) {
-  const [formData, setFormData] = useState<BookingFormData>({
+  const [formData, setFormData] = useState<ConsultationFormData>({
     fullName: '',
     phone: '',
-    service: '',
-    preferredDate: '',
+    companyName: '',
+    serviceType: '',
+    capitalAmount: '',
     message: '',
     website: '',
   })
 
-  const [errors, setErrors] = useState<BookingValidationErrors>({})
+  const [errors, setErrors] = useState<ConsultationValidationErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [successMessage, setSuccessMessage] = useState('')
 
-  // Field element refs to focus the first invalid field on failed submit
   const fullNameRef = useRef<HTMLInputElement>(null)
   const phoneRef = useRef<HTMLInputElement>(null)
+  const companyRef = useRef<HTMLInputElement>(null)
   const serviceRef = useRef<HTMLSelectElement>(null)
   const messageRef = useRef<HTMLTextAreaElement>(null)
 
@@ -42,16 +44,15 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
     const updatedData = { ...formData, [name]: value }
     setFormData(updatedData)
 
-    // Live re-validation: clear the field error as soon as it becomes valid
-    if (errors[name as keyof BookingValidationErrors]) {
-      const fieldErrors = validateBookingData(updatedData)
+    if (errors[name as keyof ConsultationValidationErrors]) {
+      const fieldErrors = validateConsultationData(updatedData)
       setErrors((prev) => {
         const nextErrors = { ...prev }
-        if (!fieldErrors[name as keyof BookingValidationErrors]) {
-          delete nextErrors[name as keyof BookingValidationErrors]
+        if (!fieldErrors[name as keyof ConsultationValidationErrors]) {
+          delete nextErrors[name as keyof ConsultationValidationErrors]
         } else {
-          nextErrors[name as keyof BookingValidationErrors] =
-            fieldErrors[name as keyof BookingValidationErrors]
+          nextErrors[name as keyof ConsultationValidationErrors] =
+            fieldErrors[name as keyof ConsultationValidationErrors]
         }
         return nextErrors
       })
@@ -60,20 +61,19 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
     if (isSubmitting) return
 
-    // Run full validation
-    const validationErrors = validateBookingData(formData)
+    const validationErrors = validateConsultationData(formData)
     setErrors(validationErrors)
 
-    // If there are errors, shift focus to the first invalid field
     if (Object.keys(validationErrors).length > 0) {
       if (validationErrors.fullName) {
         fullNameRef.current?.focus()
       } else if (validationErrors.phone) {
         phoneRef.current?.focus()
-      } else if (validationErrors.service) {
+      } else if (validationErrors.companyName) {
+        companyRef.current?.focus()
+      } else if (validationErrors.serviceType) {
         serviceRef.current?.focus()
       } else if (validationErrors.message) {
         messageRef.current?.focus()
@@ -84,7 +84,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
     setIsSubmitting(true)
 
     try {
-      const result = await submitBookingAppointment(formData)
+      const result = await submitConsultationBooking(formData)
       if (result.success) {
         setIsSuccess(true)
         setSuccessMessage(result.message)
@@ -105,8 +105,9 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
     setFormData({
       fullName: '',
       phone: '',
-      service: '',
-      preferredDate: '',
+      companyName: '',
+      serviceType: '',
+      capitalAmount: '',
       message: '',
       website: '',
     })
@@ -123,10 +124,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h3 className={styles.successTitle}>Request Validated</h3>
+        <h3 className={styles.successTitle}>Advisory Request Received</h3>
         <p className={styles.successText}>{successMessage}</p>
         <div className={styles.demoNotice}>
-          <strong>DEMO NOTICE:</strong> No backend endpoint is connected yet. Form input has been validated according to clinical booking standards without storing or logging personal information.
+          <strong>FOUNDER ADVISORY:</strong> Your 1-hour strategy consultation request is queued. An experienced funding analyst will connect within 24 hours to review your capital roadmap.
         </div>
         <button
           type="button"
@@ -134,7 +135,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           className="btn-primary"
           style={{ width: '100%', marginTop: '16px' }}
         >
-          Test Another Submission
+          Submit Another Request
         </button>
       </div>
     )
@@ -142,12 +143,12 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form} noValidate>
-      {/* Honeypot field for bot deflection */}
+      {/* Honeypot field for bot prevention */}
       <div style={{ display: 'none' }} aria-hidden="true">
-        <label htmlFor="booking-website">Leave this field blank</label>
+        <label htmlFor="consultation-website">Leave this field blank</label>
         <input
           type="text"
-          id="booking-website"
+          id="consultation-website"
           name="website"
           value={formData.website}
           onChange={handleInputChange}
@@ -158,17 +159,17 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
 
       {/* Full Name */}
       <div className={styles.fieldGroup}>
-        <label htmlFor="booking-fullname" className={styles.label}>
-          Full Name <span className={styles.requiredMark}>*</span>
+        <label htmlFor="consultation-fullname" className={styles.label}>
+          Founder Name <span className={styles.requiredMark}>*</span>
         </label>
         <input
           ref={fullNameRef}
           type="text"
-          id="booking-fullname"
+          id="consultation-fullname"
           name="fullName"
           value={formData.fullName}
           onChange={handleInputChange}
-          placeholder="e.g. Rahul Sharma"
+          placeholder="e.g. Varun Aggarwal"
           className={`${styles.input} ${errors.fullName ? styles.inputError : ''}`}
           aria-required="true"
           aria-invalid={errors.fullName ? 'true' : 'false'}
@@ -182,15 +183,15 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         )}
       </div>
 
-      {/* Phone Number */}
+      {/* Mobile Number */}
       <div className={styles.fieldGroup}>
-        <label htmlFor="booking-phone" className={styles.label}>
+        <label htmlFor="consultation-phone" className={styles.label}>
           Mobile Number <span className={styles.requiredMark}>*</span>
         </label>
         <input
           ref={phoneRef}
           type="tel"
-          id="booking-phone"
+          id="consultation-phone"
           name="phone"
           value={formData.phone}
           onChange={handleInputChange}
@@ -208,59 +209,91 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         )}
       </div>
 
-      {/* Service Selection */}
+      {/* Company / Startup Name */}
       <div className={styles.fieldGroup}>
-        <label htmlFor="booking-service" className={styles.label}>
-          Desired Procedure / Service <span className={styles.requiredMark}>*</span>
+        <label htmlFor="consultation-company" className={styles.label}>
+          Startup / Company Name <span className={styles.requiredMark}>*</span>
+        </label>
+        <input
+          ref={companyRef}
+          type="text"
+          id="consultation-company"
+          name="companyName"
+          value={formData.companyName}
+          onChange={handleInputChange}
+          placeholder="e.g. Acme Technologies Pvt Ltd"
+          className={`${styles.input} ${errors.companyName ? styles.inputError : ''}`}
+          aria-required="true"
+          aria-invalid={errors.companyName ? 'true' : 'false'}
+          aria-describedby={errors.companyName ? 'err-company' : undefined}
+        />
+        {errors.companyName && (
+          <p id="err-company" className={styles.errorMessage} role="alert">
+            {errors.companyName}
+          </p>
+        )}
+      </div>
+
+      {/* Advisory Requirement */}
+      <div className={styles.fieldGroup}>
+        <label htmlFor="consultation-service" className={styles.label}>
+          Primary Requirement <span className={styles.requiredMark}>*</span>
         </label>
         <div className={styles.selectWrapper}>
           <select
             ref={serviceRef}
-            id="booking-service"
-            name="service"
-            value={formData.service}
+            id="consultation-service"
+            name="serviceType"
+            value={formData.serviceType}
             onChange={handleInputChange}
-            className={`${styles.select} ${errors.service ? styles.inputError : ''}`}
+            className={`${styles.select} ${errors.serviceType ? styles.inputError : ''}`}
             aria-required="true"
-            aria-invalid={errors.service ? 'true' : 'false'}
-            aria-describedby={errors.service ? 'err-service' : undefined}
+            aria-invalid={errors.serviceType ? 'true' : 'false'}
+            aria-describedby={errors.serviceType ? 'err-service' : undefined}
           >
-            <option value="">Select a procedure...</option>
-            {AVAILABLE_SERVICES.map((srv) => (
+            <option value="">Select funding track...</option>
+            {FUNDING_SERVICES.map((srv) => (
               <option key={srv} value={srv}>
                 {srv}
               </option>
             ))}
           </select>
         </div>
-        {errors.service && (
+        {errors.serviceType && (
           <p id="err-service" className={styles.errorMessage} role="alert">
-            {errors.service}
+            {errors.serviceType}
           </p>
         )}
       </div>
 
-      {/* Preferred Date (Optional) */}
+      {/* Capital Range (Optional) */}
       <div className={styles.fieldGroup}>
-        <label htmlFor="booking-date" className={styles.label}>
-          Preferred Date <span className={styles.optionalMark}>(Optional)</span>
+        <label htmlFor="consultation-capital" className={styles.label}>
+          Target Capital Raise <span className={styles.optionalMark}>(Optional)</span>
         </label>
-        <input
-          type="date"
-          id="booking-date"
-          name="preferredDate"
-          value={formData.preferredDate}
-          onChange={handleInputChange}
-          className={styles.input}
-          aria-required="false"
-        />
+        <div className={styles.selectWrapper}>
+          <select
+            id="consultation-capital"
+            name="capitalAmount"
+            value={formData.capitalAmount}
+            onChange={handleInputChange}
+            className={styles.select}
+          >
+            <option value="">Select target amount...</option>
+            {CAPITAL_RANGES.map((rng) => (
+              <option key={rng} value={rng}>
+                {rng}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      {/* Message (Optional, max 400 chars) */}
+      {/* Message */}
       <div className={styles.fieldGroup}>
         <div className={styles.labelRow}>
-          <label htmlFor="booking-message" className={styles.label}>
-            Symptoms or Notes <span className={styles.optionalMark}>(Optional)</span>
+          <label htmlFor="consultation-message" className={styles.label}>
+            Sector, Stage &amp; Traction <span className={styles.optionalMark}>(Optional)</span>
           </label>
           <span className={styles.charCount}>
             {(formData.message || '').length}/400
@@ -268,11 +301,11 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         </div>
         <textarea
           ref={messageRef}
-          id="booking-message"
+          id="consultation-message"
           name="message"
           value={formData.message}
           onChange={handleInputChange}
-          placeholder="Describe your tooth sensitivity, broken filling, or timeline..."
+          placeholder="e.g. AI-driven logistics, ₹40L ARR, seeking seed capital or CGTMSE grant..."
           rows={3}
           maxLength={400}
           className={`${styles.textarea} ${errors.message ? styles.inputError : ''}`}
@@ -286,7 +319,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         )}
       </div>
 
-      {/* Submit Button */}
+      {/* Submit */}
       <button
         type="submit"
         disabled={isSubmitting}
@@ -296,10 +329,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         {isSubmitting ? (
           <span className={styles.submittingContent}>
             <span className={styles.spinner} aria-hidden="true" />
-            Validating...
+            Submitting Roadmap Request...
           </span>
         ) : (
-          'Confirm Appointment Request'
+          'Book Free 1-Hour Strategy Call'
         )}
       </button>
     </form>

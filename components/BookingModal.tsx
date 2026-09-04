@@ -13,14 +13,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const modalRef = useRef<HTMLDivElement>(null)
   const closeBtnRef = useRef<HTMLButtonElement>(null)
 
-  // Handle body scroll lock & escape key
   useEffect(() => {
     if (!isOpen) return
 
     const originalOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
-    // Focus the modal or close button on open
     const timer = setTimeout(() => {
       closeBtnRef.current?.focus()
     }, 50)
@@ -87,10 +85,10 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         <div className={styles.header}>
           <div>
             <span className="section-eyebrow" style={{ marginBottom: 4 }}>
-              Direct Booking
+              Capital Advisory
             </span>
             <h2 id="booking-modal-title" className={styles.title}>
-              Reserve Your Appointment
+              Start Your Funding Journey
             </h2>
           </div>
           <button
@@ -98,7 +96,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             type="button"
             onClick={onClose}
             className={styles.closeButton}
-            aria-label="Close booking dialog"
+            aria-label="Close consultation modal"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -108,7 +106,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         </div>
 
         <p className={styles.subtitle}>
-          Same-day priority for emergency visits and cavity restorations. Please enter your details below.
+          Free 1-hour strategic session. Assess investment readiness, map non-dilutive grants, and structure your investor roadmap.
         </p>
 
         <div className={styles.body}>

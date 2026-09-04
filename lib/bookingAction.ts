@@ -1,65 +1,78 @@
-export interface BookingFormData {
+export interface ConsultationFormData {
   fullName: string
   phone: string
-  service: string
-  preferredDate?: string
+  companyName: string
+  serviceType: string
+  capitalAmount?: string
   message?: string
-  website?: string // Honeypot field
+  website?: string // Honeypot
 }
 
-export interface BookingValidationErrors {
+export interface ConsultationValidationErrors {
   fullName?: string
   phone?: string
-  service?: string
-  preferredDate?: string
+  companyName?: string
+  serviceType?: string
+  capitalAmount?: string
   message?: string
 }
 
-export interface BookingActionResult {
+export interface ConsultationActionResult {
   success: boolean
   message: string
-  errors?: BookingValidationErrors
+  errors?: ConsultationValidationErrors
 }
 
-export const AVAILABLE_SERVICES = [
-  'Tooth-coloured fillings',
-  'Old filling replacement',
-  'Root canal therapy',
-  'Preventive checkups & cleaning',
-  'Emergency visit',
-  'General consultation',
+export const FUNDING_SERVICES = [
+  'Government Grants & SISFS Advisory',
+  'Seed & Angel Equity Fundraising',
+  'Pre-Series A / Series A Capital Advisory',
+  'CGTMSE & Collateral-Free Institutional Debt',
+  'DPIIT Recognition & 80-IAC Tax Exemption',
+  'Investor-Grade Pitch Deck & Financial Modeling',
+  'Incubator & Accelerator Application Advisory',
 ] as const
 
-/**
- * Pure client-side validation logic following Section 7 requirements.
- */
-export function validateBookingData(data: BookingFormData): BookingValidationErrors {
-  const errors: BookingValidationErrors = {}
+export const CAPITAL_RANGES = [
+  'Under ₹25 Lakhs (Grants / Seed)',
+  '₹25 Lakhs – ₹1 Crore',
+  '₹1 Crore – ₹5 Crores',
+  '₹5 Crores – ₹25 Crores',
+  'Above ₹25 Crores (Growth Debt / Equity)',
+] as const
 
-  // 1. Full name: trimmed, min 2 chars, reject spaces-only
+export function validateConsultationData(data: ConsultationFormData): ConsultationValidationErrors {
+  const errors: ConsultationValidationErrors = {}
+
+  // 1. Full name
   const trimmedName = (data.fullName || '').trim()
   if (!trimmedName || trimmedName.length < 2) {
     errors.fullName = 'Please enter your full name (minimum 2 characters).'
   }
 
-  // 2. Phone: exactly 10 digits after stripping whitespace
+  // 2. Phone (10 digits India mobile)
   const sanitizedPhone = (data.phone || '').replace(/\s+/g, '').replace(/[-+()]/g, '')
-  // If user included +91 or 0 prefix, allow stripping standard prefix or check 10 digits
   const tenDigitMatch = sanitizedPhone.match(/(?:(?:0|91))?(\d{10})$/)
   const digitsOnly = sanitizedPhone.replace(/\D/g, '')
 
   if (!sanitizedPhone) {
-    errors.phone = 'Phone number is required.'
+    errors.phone = 'Mobile number is required.'
   } else if (!/^\d{10}$/.test(digitsOnly) && !tenDigitMatch) {
     errors.phone = 'Please enter a valid 10-digit mobile number.'
   }
 
-  // 3. Service: required, must not be empty
-  if (!data.service || data.service.trim() === '') {
-    errors.service = 'Please select a service.'
+  // 3. Company / Startup name
+  const trimmedCompany = (data.companyName || '').trim()
+  if (!trimmedCompany || trimmedCompany.length < 2) {
+    errors.companyName = 'Please enter your startup or company name.'
   }
 
-  // 4. Message: optional, max 400 chars
+  // 4. Service / Advisory Track
+  if (!data.serviceType || data.serviceType.trim() === '') {
+    errors.serviceType = 'Please select your primary funding requirement.'
+  }
+
+  // 5. Message (optional, max 400 chars)
   if (data.message && data.message.length > 400) {
     errors.message = 'Message must be 400 characters or fewer.'
   }
@@ -67,14 +80,10 @@ export function validateBookingData(data: BookingFormData): BookingValidationErr
   return errors
 }
 
-/**
- * Isolated submit handler ready for drop-in backend/API integration.
- * In demo mode, returns demo success without sending or persisting data.
- */
-export async function submitBookingAppointment(
-  data: BookingFormData
-): Promise<BookingActionResult> {
-  // Honeypot check: if filled, silently fail submission (bot deflection)
+export async function submitConsultationBooking(
+  data: ConsultationFormData
+): Promise<ConsultationActionResult> {
+  // Honeypot check: bot deflection
   if (data.website && data.website.trim().length > 0) {
     return {
       success: false,
@@ -82,20 +91,20 @@ export async function submitBookingAppointment(
     }
   }
 
-  const errors = validateBookingData(data)
+  const errors = validateConsultationData(data)
   if (Object.keys(errors).length > 0) {
     return {
       success: false,
-      message: 'Please resolve the highlighted errors.',
+      message: 'Please resolve the highlighted fields.',
       errors,
     }
   }
 
-  // Simulate minimal async delay for realistic UI feedback without real backend
-  await new Promise((resolve) => setTimeout(resolve, 600))
+  // Simulate network delay for realistic interaction
+  await new Promise((resolve) => setTimeout(resolve, 550))
 
   return {
     success: true,
-    message: 'Demo validation successful. No information has been sent or saved.',
+    message: 'Consultation request received. A principal capital advisor will review your roadmap.',
   }
 }

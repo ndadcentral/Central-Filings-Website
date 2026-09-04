@@ -4,23 +4,23 @@ import styles from './Process.module.css'
 const PROCESS_STEPS = [
   {
     step: '01',
-    title: 'Book Online or Call',
-    desc: 'Reserve a guaranteed time slot through our instant booking request modal or direct clinic line without waiting on hold.',
+    title: 'Discovery & Funding Audit',
+    desc: 'We assess your stage, traction, and sector, then map every Central/State grant, debt scheme, and investor track you qualify for.',
   },
   {
     step: '02',
-    title: 'Consultation & Digital X-Ray',
-    desc: 'Low-radiation digital radiography identifies the exact perimeter of cavity decay and confirms pulp health before treatment.',
+    title: 'Documentation & Financial Modelling',
+    desc: 'We construct your grant-ready pitch deck, 3–5 year financial model, unit economics breakdown, and investor collateral.',
   },
   {
     step: '03',
-    title: 'The Filling, Same Visit',
-    desc: 'Targeted gentle local anaesthesia, meticulous decay removal, optical shade matching, and light-cured composite bonding.',
+    title: 'Applications & Investor Introductions',
+    desc: 'We file scheme applications strictly to official guidelines and open curated introductions to our 500+ investor network.',
   },
   {
     step: '04',
-    title: 'Aftercare & Follow-up',
-    desc: 'Occlusion check for natural bite alignment, immediate sensitivity guidance, and straightforward follow-up advice.',
+    title: 'Close & Disburse',
+    desc: 'Pitch rehearsals, due diligence management, query handling, and compliance support carry you through to final sanction and capital disbursement.',
   },
 ]
 
@@ -29,12 +29,12 @@ export default function Process() {
     <section id="process" className="section" aria-labelledby="process-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">The Journey</span>
+          <span className="section-eyebrow">How It Works</span>
           <h2 id="process-heading" className="section-title">
-            Simple, transparent, and complete in one visit.
+            A disciplined path from scattered to funded.
           </h2>
           <p className="section-subtitle">
-            From the moment you reserve your appointment to walking out with a restored smile, here is how we work.
+            We turn the scattered maze of grants, schemes, and investors into one structured capital roadmap.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function Process() {
           {PROCESS_STEPS.map((item) => (
             <div key={item.step} className={`glass-surface ${styles.stepCard}`}>
               <div className={styles.stepBadge}>
-                <span>Step {item.step}</span>
+                <span>Phase {item.step}</span>
               </div>
               <h3 className={styles.stepTitle}>{item.title}</h3>
               <p className={styles.stepDesc}>{item.desc}</p>

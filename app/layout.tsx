@@ -27,46 +27,40 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Central Filling — Precision Tooth-Coloured Dental Restorations',
+  title: 'ConsultUp India — Startup Funding & Capital Advisory',
   description:
-    'Natural shade-matched dental fillings, amalgam replacement, and gentle cavity care in a single visit. Upfront transparent pricing and modern clinical precision.',
+    'Turn scattered grants, schemes, and investors into one disciplined funding roadmap. ConsultUp India helps founders & MSMEs get investor-ready with non-dilutive capital, institutional debt, and curated investor introductions.',
   keywords: [
-    'Central Filling',
-    'dental filling',
-    'tooth-coloured fillings',
-    'composite restoration',
-    'cavity treatment',
-    'amalgam replacement',
-    'dental clinic',
+    'startup funding',
+    'government grants',
+    'DPIIT recognition',
+    'Startup India',
+    'investor connections',
+    'MSME loans',
+    'CGTMSE',
+    'venture capital',
+    'capital advisory India',
+    'ConsultUp India',
   ],
-  authors: [{ name: 'Central Filling Dental Clinic' }],
-  metadataBase: new URL('https://centralfilling-demo.placeholder.local'),
+  authors: [{ name: 'ConsultUp India' }],
+  metadataBase: new URL('https://consultupindia.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Central Filling — A filling that fits, the first time.',
+    title: 'ConsultUp India — Structured Capital Advisory',
     description:
-      'Precision, tooth-coloured restorations crafted to match your natural enamel and protect your smile in one visit.',
-    url: 'https://centralfilling-demo.placeholder.local',
-    siteName: 'Central Filling',
+      'We turn the scattered maze of grants, schemes, investors, and compliance into one disciplined funding roadmap — built on real documentation, financial modeling, and investor-grade positioning.',
+    url: 'https://consultupindia.com',
+    siteName: 'ConsultUp India',
     locale: 'en_IN',
     type: 'website',
-    images: [
-      {
-        url: '/og-placeholder.png',
-        width: 1200,
-        height: 630,
-        alt: 'Central Filling Clinic Preview [Placeholder asset required for production]',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Central Filling — Precision Dental Restorations',
+    title: 'ConsultUp India — Structured Capital Advisory',
     description:
-      'Tooth-coloured composite fillings and restorative dentistry in a single visit.',
-    images: ['/og-placeholder.png'],
+      'Turn scattered grants, schemes, and investors into one disciplined funding roadmap.',
   },
   robots: {
     index: true,
@@ -89,7 +83,7 @@ export default function RootLayout({
           {/* Floating Brand Wordmark — Fixed top-left (Server Component) */}
           <BrandWordmark />
 
-          {/* Floating "Book appointment" Pill Button — Fixed top-right (Client Component) */}
+          {/* Floating "Start Funding Journey" Pill Button — Fixed top-right (Client Component) */}
           <FloatingBookButton />
 
           {children}

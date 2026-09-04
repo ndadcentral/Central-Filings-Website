@@ -12,69 +12,84 @@ export default function Footer() {
           <div className={styles.brandCol}>
             <div className={styles.brandWordmark}>
               <span className={styles.brandIcon} aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2C7.5 2 4 4.5 4 8c0 3 2.5 5.5 3 9 .5 3 2 5 5 5s4.5-2 5-5c.5-3.5 3-6 3-9 0-3.5-3.5-6-8-6z" />
-                  <path d="M9 10c1 .8 2 1 3 1s2-.2 3-1" />
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  <polyline points="17 6 23 6 23 12" />
                 </svg>
               </span>
-              <span className={styles.brandName}>Central Filling</span>
+              <span className={styles.brandName}>ConsultUp India</span>
             </div>
             <p className={styles.brandDesc}>
-              Conservative restorative dentistry providing shade-matched, long-lasting dental fillings and oral health care in a single visit.
+              Strategic capital advisory firm empowering founders to build investment-ready enterprises through non-dilutive grants, institutional debt, and curated equity rounds.
             </p>
             <div className={styles.demoBadge}>
-              <span className="placeholder-tag">[Client Demo Build — No Live Backend]</span>
+              <span className={styles.cinTag}>CIN: U70200GJ2024PTC154854 · GSTIN: 24AAMCC0978L1Z8</span>
             </div>
           </div>
 
-          {/* Contact Placeholders per Section 6 */}
+          {/* Contact Details */}
           <div className={styles.contactCol}>
-            <h3 className={styles.colTitle}>Clinic Contact</h3>
+            <h3 className={styles.colTitle}>Offices &amp; Contact</h3>
             <ul className={styles.contactList}>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Phone:</span>
-                <span className="placeholder-tag">[Phone number — confirm with clinic]</span>
+                <span className={styles.contactLabel}>Toll-Free Helpline:</span>
+                <a href="tel:18002021945" className={styles.contactLink}>1800-202-1945</a>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Email:</span>
-                <span className="placeholder-tag">[Email address — confirm with clinic]</span>
+                <span className={styles.contactLabel}>Email Inquiries:</span>
+                <a href="mailto:hello@consultupindia.com" className={styles.contactLink}>hello@consultupindia.com</a>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Address:</span>
-                <span className="placeholder-tag">[Clinic address — confirm with clinic]</span>
+                <span className={styles.contactLabel}>Head Office (Ahmedabad):</span>
+                <span className={styles.addressText}>415, Westface, Thaltej, Ahmedabad, Gujarat - 380059</span>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Hours:</span>
-                <span className="placeholder-tag">[Opening hours — confirm with clinic]</span>
+                <span className={styles.contactLabel}>Hyderabad Office:</span>
+                <span className={styles.addressText}>Tower 2, Phoenix H10, HITEC City, Madhapur, Hyderabad - 500081</span>
               </li>
             </ul>
           </div>
 
-          {/* Legal Links Placeholders */}
+          {/* Services Quick Directory */}
           <div className={styles.legalCol}>
-            <h3 className={styles.colTitle}>Information &amp; Policies</h3>
+            <h3 className={styles.colTitle}>Core Advisory</h3>
             <ul className={styles.legalList}>
               <li>
-                <span className="placeholder-tag">[Privacy Policy placeholder]</span>
+                <a href="#services" className={styles.footerLink}>Government Grants &amp; SISFS</a>
               </li>
               <li>
-                <span className="placeholder-tag">[Terms of Service placeholder]</span>
+                <a href="#services" className={styles.footerLink}>DPIIT &amp; 80-IAC Tax Exemption</a>
               </li>
               <li>
-                <span className="placeholder-tag">[Patient Health Disclosures placeholder]</span>
+                <a href="#services" className={styles.footerLink}>CGTMSE Collateral-Free Debt</a>
+              </li>
+              <li>
+                <a href="#services" className={styles.footerLink}>Investor-Grade Pitch Decks</a>
+              </li>
+              <li>
+                <a href="#services" className={styles.footerLink}>Financial Modeling &amp; IBBI Valuation</a>
+              </li>
+              <li>
+                <a href="#services" className={styles.footerLink}>500+ Curated Investor Network</a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Disclaimer & Bottom Bar */}
+        <div className={styles.disclaimerContainer}>
+          <p className={styles.disclaimerText}>
+            <strong>Disclaimer:</strong> We are a startup consultancy firm in India, specializing in providing expert advice tailored to the needs of modern businesses. We operate independently, without any affiliations or collaborations with government agencies, non-government organizations, institutions, or departments.
+          </p>
+        </div>
+
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © {currentYear} Central Filling. All rights reserved. Restorative dental services for adults &amp; families.
+            © {currentYear} ConsultUp India. All rights reserved.
           </p>
-          <p className={styles.note}>
-            This site is a verified frontend implementation. Placeholders marked in brackets require client clinic data before public deployment.
-          </p>
+          <div className={styles.policyLinks}>
+            <span>Privacy Policy</span> · <span>Terms &amp; Conditions</span> · <span>Refund Policy</span>
+          </div>
         </div>
       </div>
     </footer>

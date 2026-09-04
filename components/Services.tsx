@@ -5,40 +5,46 @@ import styles from './Services.module.css'
 interface ServiceItem {
   name: string
   detail: string
-  duration: string
-  idealFor: string
+  deliverable: string
+  schemesOrStage: string
 }
 
 const SERVICES: ServiceItem[] = [
   {
-    name: 'Tooth-Coloured Fillings',
-    detail: 'Biocompatible, nano-hybrid composite resin sculpted directly into decayed or chipped teeth to restore structural integrity with an imperceptible finish.',
-    duration: '35–50 mins',
-    idealFor: 'Fresh cavities, minor chips, wear facets',
+    name: 'Grants & Government Funding',
+    detail: 'Non-dilutive funding via Central and State government schemes: PMEGP, SIDBI, CGTMSE, SISFS & more. We handle end-to-end paperwork, eligibility checks, and filings.',
+    deliverable: '100% non-dilutive capital',
+    schemesOrStage: 'PMEGP · SIDBI · CGTMSE · SISFS',
   },
   {
-    name: 'Old Filling Replacement',
-    detail: 'Careful removal of leaking, cracked, or discoloured amalgam (silver) and failing composite fillings, followed by deep disinfection and modern resin sealing.',
-    duration: '45–60 mins',
-    idealFor: 'Recurrent decay, cracked silver fillings, metallic staining',
+    name: 'DPIIT Recognition & 80-IAC Tax Exemption',
+    detail: 'Official Startup India certification unlocking a 100% 3-year income tax holiday, angel tax exemptions, fast-track patent processing, and government tender preferences.',
+    deliverable: '3-year tax exemption & certificate',
+    schemesOrStage: 'Startup India · IMB Filing · Query Handling',
   },
   {
-    name: 'Root Canal Therapy',
-    detail: 'Conservative endodontic care to clear infected pulp, eradicate persistent tooth pain, and preserve your natural tooth root under a custom coronal seal.',
-    duration: '60–90 mins',
-    idealFor: 'Deep infection, severe throbbing, abscessed teeth',
+    name: 'Investor-Grade Pitch Decks',
+    detail: 'Storytelling-driven, metric-focused decks engineered for angel syndicates and venture capital partners. Built strictly to guidelines that eliminate investor friction.',
+    deliverable: 'Full custom narrative & deck',
+    schemesOrStage: 'Pre-Seed · Seed · Pre-Series A',
   },
   {
-    name: 'Preventive Checkups & Cleaning',
-    detail: 'Comprehensive digital dental diagnostics, gentle ultrasonic tartar scaling, enamel remineralization, and early cavity spot-checks.',
-    duration: '40–50 mins',
-    idealFor: 'Routine 6-month maintenance, plaque prevention',
+    name: 'Financial Models & Business Valuation',
+    detail: 'Comprehensive 3 to 5-year financial models, sensitivity matrices, unit economics, burn-rate forecasts, and formal IBBI-registered valuer certifications.',
+    deliverable: '3-5 yr DCF & valuation report',
+    schemesOrStage: 'IBBI Registered Valuer · Cap Table Modeling',
   },
   {
-    name: 'Emergency Visits',
-    detail: 'Immediate same-day clinical evaluation for acute toothaches, lost fillings, broken restorations, or sudden dental trauma.',
-    duration: 'Same-day priority',
-    idealFor: 'Sudden sharp pain, dislodged restoration, dental trauma',
+    name: 'Incubator & Accelerator Applications',
+    detail: 'End-to-end preparation for premier incubators and university accelerators across India, including video pitch scripting, application dossiers, and mock interviews.',
+    deliverable: 'Grant-ready application dossiers',
+    schemesOrStage: 'Govt Incubators · TBI · Atal Innovation',
+  },
+  {
+    name: 'Fundraising & Curated Investor Outreach',
+    detail: 'Targeted matchmaking with active VCs, family offices, and angel networks aligned with your sector. Direct follow-up assistance and term sheet negotiations.',
+    deliverable: 'Curated investor intros & closing support',
+    schemesOrStage: '500+ Active Investor Network',
   },
 ]
 
@@ -47,16 +53,15 @@ export default function Services() {
     <section id="services" className="section" aria-labelledby="services-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Clinical Scope</span>
+          <span className="section-eyebrow">Advisory Services</span>
           <h2 id="services-heading" className="section-title">
-            Restorative treatments designed for longevity.
+            Everything you need to go from idea to funding.
           </h2>
           <p className="section-subtitle">
-            Focused, conservative dental care prioritizing the preservation of your natural tooth structure.
+            Structured capital advisory designed for measurable growth. We handle the documentation and compliance so you can focus on building your enterprise.
           </p>
         </div>
 
-        {/* Row-list layout per Section 6 instructions */}
         <div className={styles.rowList}>
           {SERVICES.map((svc, index) => (
             <div key={svc.name} className={`glass-surface ${styles.serviceRow}`}>
@@ -65,8 +70,8 @@ export default function Services() {
                 <div>
                   <h3 className={styles.serviceName}>{svc.name}</h3>
                   <div className={styles.metaBadgeGroup}>
-                    <span className={styles.metaBadge}>Est. {svc.duration}</span>
-                    <span className={styles.metaBadge}>Ideal for: {svc.idealFor}</span>
+                    <span className={styles.metaBadge}>{svc.deliverable}</span>
+                    <span className={styles.metaBadge}>{svc.schemesOrStage}</span>
                   </div>
                 </div>
               </div>
@@ -86,11 +91,10 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Explicit confirmation notice per Section 6 */}
+        {/* Advisory footnote */}
         <div className={styles.disclaimerBox}>
-          <span className="placeholder-tag">[Placeholder Verification Required]</span>
           <p className={styles.disclaimerText}>
-            Service list based on the brand name — please confirm the exact procedures Central Filling offers.
+            Independent startup advisory: We structure compliant grant applications, institutional debt dossiers, and equity round collateral. Success fees apply only on disbursed funds.
           </p>
         </div>
       </div>

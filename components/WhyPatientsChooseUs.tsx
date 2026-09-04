@@ -1,61 +1,83 @@
 import React from 'react'
 import styles from './WhyPatientsChooseUs.module.css'
 
-const TRUST_POINTS = [
+const CASE_STUDIES = [
   {
-    title: 'Straight Answers First',
-    summary: 'Clear diagnosis, realistic restorative outcomes, and honest clinical advice with zero sales pressure.',
-    detail: 'We will show you exactly what your dental X-rays reveal and outline your options plainly before starting any treatment.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
-    ),
+    amount: '₹21 Cr',
+    instrument: 'Common Equity',
+    company: 'Novatech Labs Private Limited',
+    sector: 'DeepTech · Pre-Series A',
+    location: 'Hyderabad, India',
+    summary: 'Institutional round structured through comprehensive IP valuation and multi-tier investor syndication.',
   },
   {
-    title: 'Comfort Paced to You',
-    summary: 'Gentle, localized numbing, modern low-vibration instruments, and pauses whenever you raise a hand.',
-    detail: 'Dental procedures can cause anxiety. We move strictly at your pace, checking in at every stage of the restoration.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-      </svg>
-    ),
+    amount: '₹4.5 Cr',
+    instrument: 'CCPS',
+    company: 'VoltGrid Private Limited',
+    sector: 'CleanTech / Energy · Seed',
+    location: 'Hyderabad, India',
+    summary: 'Early-stage equity round raised alongside government seed fund grant advisory.',
   },
   {
-    title: 'Built for One Visit',
-    summary: 'Efficient appointments designed to respect your schedule without rushing technical precision.',
-    detail: 'We allocate dedicated doctor and operatory time so you leave with your cavity fully resolved in a single session.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
+    amount: '₹27 Cr',
+    instrument: 'Common Equity',
+    company: 'Regal Hotel Private Limited',
+    sector: 'Hospitality · Series B',
+    location: 'Maharashtra, India',
+    summary: 'Growth expansion funding executed with institutional family office consortium.',
+  },
+  {
+    amount: '₹250 Cr',
+    instrument: 'Structured Debt',
+    company: 'Vista Crest Realtors Pvt Ltd',
+    sector: 'Real Estate & Infrastructure',
+    location: 'Maharashtra, India',
+    summary: 'Large-scale debt structuring with premier scheduled commercial banks and NBFCs.',
+  },
+  {
+    amount: 'AED 12M',
+    instrument: 'OCPS',
+    company: 'Lumen Bridge Stay LLC',
+    sector: 'Hospitality · Series A',
+    location: 'Sharjah, UAE',
+    summary: 'Cross-border capital structuring and investor collateral for MENA expansion.',
+  },
+  {
+    amount: '₹2 Cr',
+    instrument: 'Collateral-Free Debt',
+    company: 'Mr Burton LLP',
+    sector: 'Consumer / D2C · Pre-Series A',
+    location: 'Maharashtra, India',
+    summary: 'CGTMSE scheme mapping and sanctioned credit facility without third-party collateral.',
   },
 ]
 
 export default function WhyPatientsChooseUs() {
   return (
-    <section className="section" aria-labelledby="trust-heading">
+    <section className="section" aria-labelledby="results-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Patient Commitment</span>
-          <h2 id="trust-heading" className="section-title">
-            Why patients choose Central Filling.
+          <span className="section-eyebrow">Proven Outcomes</span>
+          <h2 id="results-heading" className="section-title">
+            Real outcomes, from scattered to sanctioned.
           </h2>
           <p className="section-subtitle">
-            Reliable dental care centered around honest diagnostics and clinical precision.
+            How we have helped founders and enterprises turn a maze of grants, schemes, and investor conversations into closed, sanctioned capital rounds.
           </p>
         </div>
 
         <div className={styles.grid}>
-          {TRUST_POINTS.map((pt) => (
-            <div key={pt.title} className={`glass-surface ${styles.trustCard}`}>
-              <div className={styles.iconBadge}>{pt.icon}</div>
-              <h3 className={styles.cardTitle}>{pt.title}</h3>
-              <p className={styles.cardSummary}>{pt.summary}</p>
-              <p className={styles.cardDetail}>{pt.detail}</p>
+          {CASE_STUDIES.map((item) => (
+            <div key={item.company} className={`glass-surface ${styles.trustCard}`}>
+              <div className={styles.cardTopRow}>
+                <span className={styles.instrumentBadge}>{item.instrument}</span>
+                <span className={styles.locationText}>{item.location}</span>
+              </div>
+              <div className={styles.amountDisplay}>{item.amount}</div>
+              <div className={styles.amountLabel}>Capital Sanctioned / Raised</div>
+              <h3 className={styles.cardTitle}>{item.company}</h3>
+              <div className={styles.sectorTag}>{item.sector}</div>
+              <p className={styles.cardDetail}>{item.summary}</p>
             </div>
           ))}
         </div>

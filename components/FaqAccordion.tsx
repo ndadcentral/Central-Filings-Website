@@ -6,41 +6,48 @@ import styles from './FaqAccordion.module.css'
 interface FaqItem {
   question: string
   answer: string
-  placeholderTag?: string
 }
 
 const FAQS: FaqItem[] = [
   {
-    question: 'Do fillings hurt?',
+    question: 'What exactly does ConsultUp India do?',
     answer:
-      'No. We apply a topical numbing gel first, followed by gentle, localized anaesthesia before beginning any preparation. Most patients feel only slight vibrations or light water spray during the procedure, with zero sharp discomfort.',
+      'ConsultUp India is a structured funding and capital advisory firm. We help startups and MSMEs prepare for government grants, institutional venture funding, and collateral-free loan opportunities through professional financial modeling, investor-grade documentation, and strategic scheme alignment.',
   },
   {
-    question: 'How long does a filling appointment take?',
+    question: 'Do you guarantee funding?',
     answer:
-      'A standard single-tooth composite filling typically takes between 35 and 50 minutes from start to finish. This includes numbing, careful decay removal, layer-by-layer composite bonding, UV light curing, and bite adjustment.',
+      'No. Funding approvals and disbursements are decided exclusively by investors, banks, or government review committees. Our role is to optimize your company’s compliance, financial models, pitch deck narrative, and presentation standards to maximize investor readiness and sanction probability.',
   },
   {
-    question: 'Do you accept dental insurance?',
+    question: 'What type of funding support do you provide?',
     answer:
-      'We provide detailed, itemized medical receipts and treatment forms suitable for claiming reimbursement with major private healthcare insurers and employer dental plans.',
-    placeholderTag: '[Placeholder — confirm insurance networks with clinic]',
+      'We support the full capital spectrum: non-dilutive government grants (SISFS, PMEGP, state innovation schemes), DPIIT recognition, 80-IAC 3-year tax exemption, structured debt advisory (CGTMSE up to ₹20 Cr, SIDBI, bank term loans), and curated investor outreach for equity rounds.',
   },
   {
-    question: 'Can I get a same-day emergency appointment?',
+    question: 'What is the success fee?',
     answer:
-      'We reserve priority emergency slots daily for acute toothache, dislodged restorations, and sudden trauma. Please use our instant booking form or call our direct desk for priority same-day scheduling.',
-    placeholderTag: '[Placeholder — confirm same-day emergency protocol with clinic]',
+      'Our success fee (1.5% to 2% depending on agreement terms) applies strictly post-disbursement. It is earned only after funds are officially sanctioned and deposited into your company’s bank account.',
   },
   {
-    question: 'What if my old filling needs replacing?',
+    question: 'What is the validity period of each advisory plan?',
     answer:
-      'Old amalgam or cracked composite fillings can leak over time, allowing bacteria beneath the restoration. We gently remove the failing material, inspect and sanitize the cavity, and restore the tooth with modern shade-matched nano-hybrid resin.',
+      'Advisory programs carry a validity of 6 to 12 months. All document drafting, financial models, scheme filings, pitch rehearsals, and investor introductions are delivered continuously within this timeframe.',
+  },
+  {
+    question: 'Do you support collateral-free bank loans?',
+    answer:
+      'Yes. We specialize in mapping and structuring government-backed credit guarantees such as CGTMSE (Credit Guarantee Fund Trust for Micro and Small Enterprises), enabling collateral-free business loans up to ₹20 Crores through scheduled commercial lenders.',
+  },
+  {
+    question: 'How long does the funding process take?',
+    answer:
+      'Timelines depend on the chosen route: government grants typically process within 60–90 days, institutional debt takes 30–60 days, and equity rounds span 3–6 months. We compress these timelines by eliminating documentation back-and-forth.',
   },
 ]
 
 export default function FaqAccordion() {
-  const [openIndices, setOpenIndices] = useState<number[]>([0]) // First item expanded by default
+  const [openIndices, setOpenIndices] = useState<number[]>([0])
 
   const toggleItem = (index: number) => {
     setOpenIndices((prev) =>
@@ -54,10 +61,10 @@ export default function FaqAccordion() {
         <div className="section-header">
           <span className="section-eyebrow">Common Questions</span>
           <h2 id="faq-heading" className="section-title">
-            Frequently Asked Questions
+            Everything founders ask before starting.
           </h2>
           <p className="section-subtitle">
-            Clear answers about treatment time, anaesthesia, restorative materials, and booking.
+            Transparent answers regarding our advisory scope, non-dilutive grant procedures, success fees, and timelines.
           </p>
         </div>
 
@@ -97,9 +104,6 @@ export default function FaqAccordion() {
                 >
                   <div className={styles.answerInner}>
                     <p className={styles.answerText}>{faq.answer}</p>
-                    {faq.placeholderTag && (
-                      <span className="placeholder-tag">{faq.placeholderTag}</span>
-                    )}
                   </div>
                 </div>
               </div>

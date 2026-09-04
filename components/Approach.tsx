@@ -1,46 +1,46 @@
 import React from 'react'
 import styles from './Approach.module.css'
 
-const APPROACH_POINTS = [
+const PILLARS = [
   {
     number: '01',
-    title: 'Shade-Matched Fillings',
+    title: 'Expert Guidance Upfront',
     description:
-      'We use high-grade composite resin calibrated to your exact natural tooth tone and opacity. The filling integrates seamlessly, leaving no visible metal line or discoloured boundaries.',
-    highlight: 'Natural aesthetics & seamless edge blend',
+      'Free one-hour consultation. We evaluate your funding stage, stress-test your business model, and outline the exact non-dilutive and equity capital options available to you.',
+    highlight: 'Comprehensive stage & eligibility audit',
   },
   {
     number: '02',
-    title: 'One-Visit Standard Cavities',
+    title: 'Full Cycle Hand Holding',
     description:
-      'From decayed tissue removal and prep to high-intensity light curing and final occlusal polishing, your standard cavity restoration is completed in a single, unhurried appointment.',
-    highlight: 'No temporary fillings or repeat trips',
+      'Present at term sheet structuring, investor due diligence, and final sanction. Our team works alongside you until funds are officially disbursed into your company account.',
+    highlight: 'Present through term sheet to disbursement',
   },
   {
     number: '03',
-    title: 'Upfront Pricing Before Work Starts',
+    title: 'Diverse Portfolio, All Stages',
     description:
-      'You receive a clear breakdown of recommended procedures, restorative materials, and transparent costs before any drill touches your tooth. No surprise fees on your bill.',
-    highlight: 'Clear written treatment plan',
+      'Direct relationships with 500+ active angel syndicates, institutional venture funds, and family offices spanning DeepTech, CleanTech, Healthcare, D2C, and B2B SaaS.',
+    highlight: '500+ active institutional & angel connections',
   },
 ]
 
 export default function Approach() {
   return (
-    <section id="approach" className="section" aria-labelledby="approach-heading">
+    <section id="about" className="section" aria-labelledby="about-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Clinical Philosophy</span>
-          <h2 id="approach-heading" className="section-title">
-            Restorations built on precision, not guesswork.
+          <span className="section-eyebrow">Who We Are</span>
+          <h2 id="about-heading" className="section-title">
+            Raising capital? It starts here.
           </h2>
           <p className="section-subtitle">
-            Modern restorative dentistry engineered to protect healthy tooth structure, eliminate sensitivity, and preserve your original bite.
+            Transparent pricing. Experienced hands. Proven results. Your financial models and investor relations handled by seasoned analysts and incubator advisors.
           </p>
         </div>
 
         <div className={styles.grid}>
-          {APPROACH_POINTS.map((item) => (
+          {PILLARS.map((item) => (
             <div key={item.number} className={`glass-surface ${styles.card}`}>
               <div className={styles.cardNumber} aria-hidden="true">
                 {item.number}
