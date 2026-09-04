@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     'Central Fillings',
   ],
   authors: [{ name: 'Central Fillings' }],
-  metadataBase: new URL('https://centralfilling.in'),
+  metadataBase: new URL('https://centralfillings.in'),
   alternates: {
     canonical: '/',
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title: 'Central Fillings — Every filing, done right and on time.',
     description:
       'Central Fillings handles business registration, tax, and compliance filings for individuals, startups, and MSMEs — explained in plain language, filed correctly the first time.',
-    url: 'https://centralfilling.in',
+    url: 'https://centralfillings.in',
     siteName: 'Central Fillings',
     locale: 'en_IN',
     type: 'website',
