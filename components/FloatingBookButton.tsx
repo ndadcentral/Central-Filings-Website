@@ -16,7 +16,7 @@ export default function FloatingBookButton() {
         aria-haspopup="dialog"
       >
         <span className={styles.pulseDot} aria-hidden="true" />
-        <span className={styles.btnText}>Start Funding Journey</span>
+        <span className={styles.btnText}>Book a consultation</span>
       </button>
     </div>
   )

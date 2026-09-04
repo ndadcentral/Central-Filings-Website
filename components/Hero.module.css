@@ -168,6 +168,14 @@
   width: 100%;
 }
 
+.reassuranceText {
+  font-size: 0.84rem;
+  color: var(--paper-dim);
+  margin-top: -32px;
+  margin-bottom: 38px;
+  letter-spacing: 0.01em;
+}
+
 @media (max-width: 480px) {
   .ctaGroup {
     flex-direction: column;
@@ -178,6 +186,16 @@
     width: 100%;
     max-width: 320px;
   }
+}
+
+.motifContainer {
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.motifSvg {
+  filter: drop-shadow(0 4px 16px rgba(45, 212, 191, 0.25));
 }
 
 .microProof {

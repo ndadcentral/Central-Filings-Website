@@ -4,23 +4,23 @@ import styles from './Process.module.css'
 const PROCESS_STEPS = [
   {
     step: '01',
-    title: 'Discovery & Funding Audit',
-    desc: 'We assess your stage, traction, and sector, then map every Central/State grant, debt scheme, and investor track you qualify for.',
+    title: 'Share Your Details',
+    desc: 'Tell us your entity type and what needs filing. We identify the exact statutory forms and documentation required.',
   },
   {
     step: '02',
-    title: 'Documentation & Financial Modelling',
-    desc: 'We construct your grant-ready pitch deck, 3–5 year financial model, unit economics breakdown, and investor collateral.',
+    title: 'Document Review',
+    desc: 'We check what is required and flag any gaps or errors before filing, eliminating rejection notices and delays.',
   },
   {
     step: '03',
-    title: 'Applications & Investor Introductions',
-    desc: 'We file scheme applications strictly to official guidelines and open curated introductions to our 500+ investor network.',
+    title: 'Filing & Submission',
+    desc: 'Your forms are prepared, double-checked, and submitted directly to the relevant government or statutory portal.',
   },
   {
     step: '04',
-    title: 'Close & Disburse',
-    desc: 'Pitch rehearsals, due diligence management, query handling, and compliance support carry you through to final sanction and capital disbursement.',
+    title: 'Confirmation & Calendar',
+    desc: 'You receive official proof of filing plus a tailored compliance calendar so you always know what is due next.',
   },
 ]
 
@@ -31,10 +31,10 @@ export default function Process() {
         <div className="section-header">
           <span className="section-eyebrow">How It Works</span>
           <h2 id="process-heading" className="section-title">
-            A disciplined path from scattered to funded.
+            A simple, four-step filing process.
           </h2>
           <p className="section-subtitle">
-            We turn the scattered maze of grants, schemes, and investors into one structured capital roadmap.
+            From document review to official submission, we make business and tax compliance straightforward and dependable.
           </p>
         </div>
 

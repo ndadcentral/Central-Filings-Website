@@ -12,65 +12,66 @@ export default function Footer() {
           <div className={styles.brandCol}>
             <div className={styles.brandWordmark}>
               <span className={styles.brandIcon} aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                  <polyline points="17 6 23 6 23 12" />
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <path d="m9 15 2 2 4-4" />
                 </svg>
               </span>
-              <span className={styles.brandName}>ConsultUp India</span>
+              <span className={styles.brandName}>Central Filling</span>
             </div>
             <p className={styles.brandDesc}>
-              Strategic capital advisory firm empowering founders to build investment-ready enterprises through non-dilutive grants, institutional debt, and curated equity rounds.
+              Business registration, tax, and compliance filings — for individuals, startups, and MSMEs across India. Explained in plain language, filed correctly the first time.
             </p>
-            <div className={styles.demoBadge}>
-              <span className={styles.cinTag}>CIN: U70200GJ2024PTC154854 · GSTIN: 24AAMCC0978L1Z8</span>
-            </div>
           </div>
 
           {/* Contact Details */}
           <div className={styles.contactCol}>
-            <h3 className={styles.colTitle}>Offices &amp; Contact</h3>
+            <h3 className={styles.colTitle}>Office &amp; Contact</h3>
             <ul className={styles.contactList}>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Toll-Free Helpline:</span>
-                <a href="tel:18002021945" className={styles.contactLink}>1800-202-1945</a>
+                <span className={styles.contactLabel}>Phone:</span>
+                <span className="placeholder-tag">[Phone number — confirm with business]</span>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Email Inquiries:</span>
-                <a href="mailto:hello@consultupindia.com" className={styles.contactLink}>hello@consultupindia.com</a>
+                <span className={styles.contactLabel}>Email:</span>
+                <span className="placeholder-tag">[Email address — confirm with business]</span>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Head Office (Ahmedabad):</span>
-                <span className={styles.addressText}>415, Westface, Thaltej, Ahmedabad, Gujarat - 380059</span>
+                <span className={styles.contactLabel}>Office Address:</span>
+                <span className="placeholder-tag">[Office address — confirm with business]</span>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Hyderabad Office:</span>
-                <span className={styles.addressText}>Tower 2, Phoenix H10, HITEC City, Madhapur, Hyderabad - 500081</span>
+                <span className={styles.contactLabel}>Working Hours:</span>
+                <span className="placeholder-tag">[Opening hours — confirm with business]</span>
               </li>
             </ul>
           </div>
 
           {/* Services Quick Directory */}
           <div className={styles.legalCol}>
-            <h3 className={styles.colTitle}>Core Advisory</h3>
+            <h3 className={styles.colTitle}>Core Services</h3>
             <ul className={styles.legalList}>
               <li>
-                <a href="#services" className={styles.footerLink}>Government Grants &amp; SISFS</a>
+                <a href="#services" className={styles.footerLink}>GST Registration &amp; Filing</a>
               </li>
               <li>
-                <a href="#services" className={styles.footerLink}>DPIIT &amp; 80-IAC Tax Exemption</a>
+                <a href="#services" className={styles.footerLink}>Company / LLP Incorporation</a>
               </li>
               <li>
-                <a href="#services" className={styles.footerLink}>CGTMSE Collateral-Free Debt</a>
+                <a href="#services" className={styles.footerLink}>ROC Annual Compliance</a>
               </li>
               <li>
-                <a href="#services" className={styles.footerLink}>Investor-Grade Pitch Decks</a>
+                <a href="#services" className={styles.footerLink}>Income Tax Filing (ITR)</a>
               </li>
               <li>
-                <a href="#services" className={styles.footerLink}>Financial Modeling &amp; IBBI Valuation</a>
+                <a href="#services" className={styles.footerLink}>MSME / Udyam Registration</a>
               </li>
               <li>
-                <a href="#services" className={styles.footerLink}>500+ Curated Investor Network</a>
+                <a href="#services" className={styles.footerLink}>Trademark &amp; IP Filing</a>
+              </li>
+              <li>
+                <a href="#services" className={styles.footerLink}>Startup India / DPIIT Recognition</a>
               </li>
             </ul>
           </div>
@@ -79,16 +80,16 @@ export default function Footer() {
         {/* Disclaimer & Bottom Bar */}
         <div className={styles.disclaimerContainer}>
           <p className={styles.disclaimerText}>
-            <strong>Disclaimer:</strong> We are a startup consultancy firm in India, specializing in providing expert advice tailored to the needs of modern businesses. We operate independently, without any affiliations or collaborations with government agencies, non-government organizations, institutions, or departments.
+            <strong>Disclaimer:</strong> Central Filling is an independent corporate, tax, and compliance advisory service provider. We are not a government agency, department, or statutory portal. All filings are submitted through respective official government portals on behalf of our clients.
           </p>
         </div>
 
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © {currentYear} ConsultUp India. All rights reserved.
+            © {currentYear} Central Filling. All rights reserved.
           </p>
           <div className={styles.policyLinks}>
-            <span>Privacy Policy</span> · <span>Terms &amp; Conditions</span> · <span>Refund Policy</span>
+            <span>[Privacy Policy]</span> · <span>[Terms &amp; Conditions]</span> · <span>[Refund Policy]</span>
           </div>
         </div>
       </div>

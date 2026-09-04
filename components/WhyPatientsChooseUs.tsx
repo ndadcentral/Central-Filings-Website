@@ -1,82 +1,52 @@
 import React from 'react'
 import styles from './WhyPatientsChooseUs.module.css'
 
-const CASE_STUDIES = [
+const TRUST_PANELS = [
   {
-    amount: '₹21 Cr',
-    instrument: 'Common Equity',
-    company: 'Novatech Labs Private Limited',
-    sector: 'DeepTech · Pre-Series A',
-    location: 'Hyderabad, India',
-    summary: 'Institutional round structured through comprehensive IP valuation and multi-tier investor syndication.',
+    badge: 'Clarity First',
+    category: 'Communication',
+    title: 'Plain-language answers before anything is filed.',
+    summary:
+      'No confusing legal jargon or rushed sign-offs. We explain what each statutory form does, which disclosures are required, and why it matters to your business.',
   },
   {
-    amount: '₹4.5 Cr',
-    instrument: 'CCPS',
-    company: 'VoltGrid Private Limited',
-    sector: 'CleanTech / Energy · Seed',
-    location: 'Hyderabad, India',
-    summary: 'Early-stage equity round raised alongside government seed fund grant advisory.',
+    badge: 'Proactive Tracking',
+    category: 'Compliance Calendar',
+    title: 'Deadlines tracked, not left to you to remember.',
+    summary:
+      'Statutory compliance does not end after registration. We maintain your active calendar for GST, ROC, and advance tax dates so penalty fees never catch you off-guard.',
   },
   {
-    amount: '₹27 Cr',
-    instrument: 'Common Equity',
-    company: 'Regal Hotel Private Limited',
-    sector: 'Hospitality · Series B',
-    location: 'Maharashtra, India',
-    summary: 'Growth expansion funding executed with institutional family office consortium.',
-  },
-  {
-    amount: '₹250 Cr',
-    instrument: 'Structured Debt',
-    company: 'Vista Crest Realtors Pvt Ltd',
-    sector: 'Real Estate & Infrastructure',
-    location: 'Maharashtra, India',
-    summary: 'Large-scale debt structuring with premier scheduled commercial banks and NBFCs.',
-  },
-  {
-    amount: 'AED 12M',
-    instrument: 'OCPS',
-    company: 'Lumen Bridge Stay LLC',
-    sector: 'Hospitality · Series A',
-    location: 'Sharjah, UAE',
-    summary: 'Cross-border capital structuring and investor collateral for MENA expansion.',
-  },
-  {
-    amount: '₹2 Cr',
-    instrument: 'Collateral-Free Debt',
-    company: 'Mr Burton LLP',
-    sector: 'Consumer / D2C · Pre-Series A',
-    location: 'Maharashtra, India',
-    summary: 'CGTMSE scheme mapping and sanctioned credit facility without third-party collateral.',
+    badge: 'Direct Access',
+    category: 'Dedicated Specialist',
+    title: 'Direct access to the person actually handling your filing.',
+    summary:
+      'Work directly with the filing professional handling your documentation. Get clear answers, timely filing confirmations, and accountable support without call-center hurdles.',
   },
 ]
 
 export default function WhyPatientsChooseUs() {
   return (
-    <section className="section" aria-labelledby="results-heading">
+    <section className="section" aria-labelledby="why-clients-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Proven Outcomes</span>
-          <h2 id="results-heading" className="section-title">
-            Real outcomes, from scattered to sanctioned.
+          <span className="section-eyebrow">Why Central Filling</span>
+          <h2 id="why-clients-heading" className="section-title">
+            Why clients choose Central Filling.
           </h2>
           <p className="section-subtitle">
-            How we have helped founders and enterprises turn a maze of grants, schemes, and investor conversations into closed, sanctioned capital rounds.
+            Straightforward filing support built on plain language, proactive deadline tracking, and dependable execution.
           </p>
         </div>
 
         <div className={styles.grid}>
-          {CASE_STUDIES.map((item) => (
-            <div key={item.company} className={`glass-surface ${styles.trustCard}`}>
+          {TRUST_PANELS.map((item) => (
+            <div key={item.title} className={`glass-surface ${styles.trustCard}`}>
               <div className={styles.cardTopRow}>
-                <span className={styles.instrumentBadge}>{item.instrument}</span>
-                <span className={styles.locationText}>{item.location}</span>
+                <span className={styles.instrumentBadge}>{item.badge}</span>
+                <span className={styles.locationText}>{item.category}</span>
               </div>
-              <div className={styles.amountDisplay}>{item.amount}</div>
-              <div className={styles.amountLabel}>Capital Sanctioned / Raised</div>
-              <h3 className={styles.cardTitle}>{item.company}</h3>
-              <div className={styles.sectorTag}>{item.sector}</div>
+              <h3 className={styles.cardTitle}>{item.title}</h3>
               <p className={styles.cardDetail}>{item.summary}</p>
             </div>
           ))}

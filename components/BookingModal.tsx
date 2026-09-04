@@ -85,10 +85,10 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
         <div className={styles.header}>
           <div>
             <span className="section-eyebrow" style={{ marginBottom: 4 }}>
-              Capital Advisory
+              Filing &amp; Compliance
             </span>
             <h2 id="booking-modal-title" className={styles.title}>
-              Start Your Funding Journey
+              Book a Free Consultation
             </h2>
           </div>
           <button
@@ -106,7 +106,7 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
         </div>
 
         <p className={styles.subtitle}>
-          Free 1-hour strategic session. Assess investment readiness, map non-dilutive grants, and structure your investor roadmap.
+          Tell us a little about your filing needs — we&apos;ll confirm the details and guide you through the next steps.
         </p>
 
         <div className={styles.body}>

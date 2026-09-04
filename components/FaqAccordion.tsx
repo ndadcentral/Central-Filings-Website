@@ -10,39 +10,29 @@ interface FaqItem {
 
 const FAQS: FaqItem[] = [
   {
-    question: 'What exactly does ConsultUp India do?',
+    question: 'What is ROC compliance, and do I need it?',
     answer:
-      'ConsultUp India is a structured funding and capital advisory firm. We help startups and MSMEs prepare for government grants, institutional venture funding, and collateral-free loan opportunities through professional financial modeling, investor-grade documentation, and strategic scheme alignment.',
+      'ROC (Registrar of Companies) compliance refers to mandatory annual statutory filings required by the Ministry of Corporate Affairs (MCA) for all Private Limited companies, OPCs, and LLPs. This includes filing annual financial statements (Form AOC-4), annual returns (Form MGT-7/7A), and director KYC (DIR-3 KYC). If you run a registered corporate entity in India, ROC compliance is mandatory every financial year, regardless of turnover, to maintain active legal standing and avoid heavy penalty fees.',
   },
   {
-    question: 'Do you guarantee funding?',
+    question: 'Do you handle GST registration and ongoing GST filing?',
     answer:
-      'No. Funding approvals and disbursements are decided exclusively by investors, banks, or government review committees. Our role is to optimize your company’s compliance, financial models, pitch deck narrative, and presentation standards to maximize investor readiness and sanction probability.',
+      'Yes. Central Filling handles both initial GST registration (generating your 15-digit GSTIN) and recurring monthly or quarterly GST returns (GSTR-1, GSTR-3B, and annual GSTR-9). We also perform input tax credit (ITC) reconciliation with GSTR-2B to ensure you claim eligible deductions without mismatch notices.',
   },
   {
-    question: 'What type of funding support do you provide?',
+    question: 'Do you support individual income tax filing, or only businesses?',
     answer:
-      'We support the full capital spectrum: non-dilutive government grants (SISFS, PMEGP, state innovation schemes), DPIIT recognition, 80-IAC 3-year tax exemption, structured debt advisory (CGTMSE up to ₹20 Cr, SIDBI, bank term loans), and curated investor outreach for equity rounds.',
+      'Yes, we support both. We assist individual taxpayers (salaried professionals, freelancers, consultants, capital gains earners, and NRI returns) as well as proprietorships, partnerships, LLPs, and Private Limited companies with tax computation, regime analysis (old vs. new), and compliant ITR filing.',
   },
   {
-    question: 'What is the success fee?',
+    question: 'How long does a typical filing take?',
     answer:
-      'Our success fee (1.5% to 2% depending on agreement terms) applies strictly post-disbursement. It is earned only after funds are officially sanctioned and deposited into your company’s bank account.',
+      '[placeholder — confirm turnaround time with the business] Turnaround depends on the filing type: standard individual ITRs and GST returns are typically prepared within 1–2 business days after document verification, while company incorporations and trademark registrations depend on statutory portal processing queues.',
   },
   {
-    question: 'What is the validity period of each advisory plan?',
+    question: 'Is this a one-time filing service, or do you offer ongoing compliance support?',
     answer:
-      'Advisory programs carry a validity of 6 to 12 months. All document drafting, financial models, scheme filings, pitch rehearsals, and investor introductions are delivered continuously within this timeframe.',
-  },
-  {
-    question: 'Do you support collateral-free bank loans?',
-    answer:
-      'Yes. We specialize in mapping and structuring government-backed credit guarantees such as CGTMSE (Credit Guarantee Fund Trust for Micro and Small Enterprises), enabling collateral-free business loans up to ₹20 Crores through scheduled commercial lenders.',
-  },
-  {
-    question: 'How long does the funding process take?',
-    answer:
-      'Timelines depend on the chosen route: government grants typically process within 60–90 days, institutional debt takes 30–60 days, and equity rounds span 3–6 months. We compress these timelines by eliminating documentation back-and-forth.',
+      '[placeholder — confirm with the business] We offer both one-time filing services (such as single registrations or annual tax returns) and ongoing monthly or annual compliance calendar retainers for growing businesses.',
   },
 ]
 
@@ -61,10 +51,10 @@ export default function FaqAccordion() {
         <div className="section-header">
           <span className="section-eyebrow">Common Questions</span>
           <h2 id="faq-heading" className="section-title">
-            Everything founders ask before starting.
+            Frequently asked questions about filings.
           </h2>
           <p className="section-subtitle">
-            Transparent answers regarding our advisory scope, non-dilutive grant procedures, success fees, and timelines.
+            Plain answers to help you navigate registration, tax, and ongoing statutory compliance requirements.
           </p>
         </div>
 

@@ -11,40 +11,53 @@ interface ServiceItem {
 
 const SERVICES: ServiceItem[] = [
   {
-    name: 'Grants & Government Funding',
-    detail: 'Non-dilutive funding via Central and State government schemes: PMEGP, SIDBI, CGTMSE, SISFS & more. We handle end-to-end paperwork, eligibility checks, and filings.',
-    deliverable: '100% non-dilutive capital',
-    schemesOrStage: 'PMEGP · SIDBI · CGTMSE · SISFS',
+    name: 'GST Registration & Filing',
+    detail:
+      'Monthly, quarterly, and annual GST return preparation (GSTR-1, GSTR-3B, GSTR-9), input tax credit reconciliation, and new registrations for businesses.',
+    deliverable: 'Accurate ITC & timely return filing',
+    schemesOrStage: 'GSTR-1 · GSTR-3B · GSTR-9 · ITC Match',
   },
   {
-    name: 'DPIIT Recognition & 80-IAC Tax Exemption',
-    detail: 'Official Startup India certification unlocking a 100% 3-year income tax holiday, angel tax exemptions, fast-track patent processing, and government tender preferences.',
-    deliverable: '3-year tax exemption & certificate',
-    schemesOrStage: 'Startup India · IMB Filing · Query Handling',
+    name: 'Company / LLP Incorporation',
+    detail:
+      'Name reservation, MOA/AOA drafting, SPICe+ form submission, DIN, PAN, TAN, and Certificate of Incorporation for Private Limited and LLP entities.',
+    deliverable: 'Incorporation certificate & kit',
+    schemesOrStage: 'Pvt Ltd · LLP · OPC · SPICe+',
   },
   {
-    name: 'Investor-Grade Pitch Decks',
-    detail: 'Storytelling-driven, metric-focused decks engineered for angel syndicates and venture capital partners. Built strictly to guidelines that eliminate investor friction.',
-    deliverable: 'Full custom narrative & deck',
-    schemesOrStage: 'Pre-Seed · Seed · Pre-Series A',
+    name: 'ROC Annual Compliance',
+    detail:
+      'Annual statutory filing with MCA: Form AOC-4 (financial statements), Form MGT-7/7A (annual return), Director KYC (DIR-3 KYC), and statutory register maintenance.',
+    deliverable: 'Zero penalty MCA compliance',
+    schemesOrStage: 'AOC-4 · MGT-7 · DIR-3 KYC · MCA',
   },
   {
-    name: 'Financial Models & Business Valuation',
-    detail: 'Comprehensive 3 to 5-year financial models, sensitivity matrices, unit economics, burn-rate forecasts, and formal IBBI-registered valuer certifications.',
-    deliverable: '3-5 yr DCF & valuation report',
-    schemesOrStage: 'IBBI Registered Valuer · Cap Table Modeling',
+    name: 'Income Tax Filing — Individuals & Businesses',
+    detail:
+      'Tax computation, regime comparison (old vs. new), advance tax planning, and timely return filing for salaried individuals, professionals, and corporate entities.',
+    deliverable: 'Maximized deductions & compliant ITR',
+    schemesOrStage: 'ITR-1 to ITR-7 · Tax Planning',
   },
   {
-    name: 'Incubator & Accelerator Applications',
-    detail: 'End-to-end preparation for premier incubators and university accelerators across India, including video pitch scripting, application dossiers, and mock interviews.',
-    deliverable: 'Grant-ready application dossiers',
-    schemesOrStage: 'Govt Incubators · TBI · Atal Innovation',
+    name: 'MSME / Udyam Registration',
+    detail:
+      'Official Ministry of MSME registration certificate enabling priority sector bank credit, lower loan interest rates, and government tender fee exemptions.',
+    deliverable: 'Official Udyam certificate',
+    schemesOrStage: 'Udyam · MSME Benefits · Priority Credit',
   },
   {
-    name: 'Fundraising & Curated Investor Outreach',
-    detail: 'Targeted matchmaking with active VCs, family offices, and angel networks aligned with your sector. Direct follow-up assistance and term sheet negotiations.',
-    deliverable: 'Curated investor intros & closing support',
-    schemesOrStage: '500+ Active Investor Network',
+    name: 'Trademark & IP Filing Support',
+    detail:
+      'Comprehensive trademark availability search, appropriate class classification, TM application filing with the IP India registry, and objection response support.',
+    deliverable: 'Brand protection & TM application',
+    schemesOrStage: 'IP India · TM-A · Objection Defense',
+  },
+  {
+    name: 'Startup India / DPIIT Recognition Support',
+    detail:
+      'DPIIT recognition dossier preparation unlocking 3-year tax exemption eligibility, angel tax relief, fast-track patent processing, and government scheme access.',
+    deliverable: 'DPIIT recognition certificate',
+    schemesOrStage: 'Startup India · 80-IAC · Fast-Track IP',
   },
 ]
 
@@ -53,12 +66,12 @@ export default function Services() {
     <section id="services" className="section" aria-labelledby="services-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Advisory Services</span>
+          <span className="section-eyebrow">Filing &amp; Compliance</span>
           <h2 id="services-heading" className="section-title">
-            Everything you need to go from idea to funding.
+            Everything you need to keep your business fully compliant.
           </h2>
           <p className="section-subtitle">
-            Structured capital advisory designed for measurable growth. We handle the documentation and compliance so you can focus on building your enterprise.
+            End-to-end filing services for individuals, entrepreneurs, and established enterprises across India.
           </p>
         </div>
 
@@ -91,10 +104,10 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Advisory footnote */}
+        {/* Footnote disclaimer */}
         <div className={styles.disclaimerBox}>
           <p className={styles.disclaimerText}>
-            Independent startup advisory: We structure compliant grant applications, institutional debt dossiers, and equity round collateral. Success fees apply only on disbursed funds.
+            <span className="placeholder-tag">[Service list based on the business category provided — please confirm the exact services Central Filling offers so this list can be corrected.]</span>
           </p>
         </div>
       </div>

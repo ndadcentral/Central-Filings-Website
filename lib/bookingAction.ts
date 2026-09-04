@@ -23,22 +23,25 @@ export interface ConsultationActionResult {
   errors?: ConsultationValidationErrors
 }
 
-export const FUNDING_SERVICES = [
-  'Government Grants & SISFS Advisory',
-  'Seed & Angel Equity Fundraising',
-  'Pre-Series A / Series A Capital Advisory',
-  'CGTMSE & Collateral-Free Institutional Debt',
-  'DPIIT Recognition & 80-IAC Tax Exemption',
-  'Investor-Grade Pitch Deck & Financial Modeling',
-  'Incubator & Accelerator Application Advisory',
+export const FILING_SERVICES = [
+  'GST registration & filing',
+  'Company / LLP incorporation',
+  'ROC annual compliance',
+  'Income tax filing — individuals & businesses',
+  'MSME / Udyam registration',
+  'Trademark & IP filing support',
+  'Startup India / DPIIT recognition support',
+  'Not sure — need advice',
 ] as const
 
-export const CAPITAL_RANGES = [
-  'Under ₹25 Lakhs (Grants / Seed)',
-  '₹25 Lakhs – ₹1 Crore',
-  '₹1 Crore – ₹5 Crores',
-  '₹5 Crores – ₹25 Crores',
-  'Above ₹25 Crores (Growth Debt / Equity)',
+export const ENTITY_TYPES = [
+  'Individual / Salaried',
+  'Sole Proprietorship',
+  'Partnership Firm',
+  'Limited Liability Partnership (LLP)',
+  'Private Limited Company (Pvt Ltd)',
+  'One Person Company (OPC)',
+  'Not registered yet / Need guidance',
 ] as const
 
 export function validateConsultationData(data: ConsultationFormData): ConsultationValidationErrors {
@@ -69,7 +72,7 @@ export function validateConsultationData(data: ConsultationFormData): Consultati
 
   // 4. Service / Advisory Track
   if (!data.serviceType || data.serviceType.trim() === '') {
-    errors.serviceType = 'Please select your primary funding requirement.'
+    errors.serviceType = 'Please select your primary filing requirement.'
   }
 
   // 5. Message (optional, max 400 chars)
@@ -105,6 +108,6 @@ export async function submitConsultationBooking(
 
   return {
     success: true,
-    message: 'Consultation request received. A principal capital advisor will review your roadmap.',
+    message: 'Consultation request received. A filing specialist will connect to review your requirements.',
   }
 }

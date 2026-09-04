@@ -6,8 +6,8 @@ import {
   ConsultationValidationErrors,
   validateConsultationData,
   submitConsultationBooking,
-  FUNDING_SERVICES,
-  CAPITAL_RANGES,
+  FILING_SERVICES,
+  ENTITY_TYPES,
 } from '@/lib/bookingAction'
 import styles from './BookingForm.module.css'
 
@@ -124,10 +124,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h3 className={styles.successTitle}>Advisory Request Received</h3>
+        <h3 className={styles.successTitle}>Consultation Request Received</h3>
         <p className={styles.successText}>{successMessage}</p>
         <div className={styles.demoNotice}>
-          <strong>FOUNDER ADVISORY:</strong> Your 1-hour strategy consultation request is queued. An experienced funding analyst will connect within 24 hours to review your capital roadmap.
+          <strong>CENTRAL FILLING:</strong> Your consultation request has been queued. A filing specialist will connect within 24 hours to review your requirements and answer your questions.
         </div>
         <button
           type="button"
@@ -160,7 +160,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
       {/* Full Name */}
       <div className={styles.fieldGroup}>
         <label htmlFor="consultation-fullname" className={styles.label}>
-          Founder Name <span className={styles.requiredMark}>*</span>
+          Full Name <span className={styles.requiredMark}>*</span>
         </label>
         <input
           ref={fullNameRef}
@@ -169,7 +169,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           name="fullName"
           value={formData.fullName}
           onChange={handleInputChange}
-          placeholder="e.g. Varun Aggarwal"
+          placeholder="e.g. Rahul Sharma"
           className={`${styles.input} ${errors.fullName ? styles.inputError : ''}`}
           aria-required="true"
           aria-invalid={errors.fullName ? 'true' : 'false'}
@@ -209,10 +209,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         )}
       </div>
 
-      {/* Company / Startup Name */}
+      {/* Company / Startup / Individual Name */}
       <div className={styles.fieldGroup}>
         <label htmlFor="consultation-company" className={styles.label}>
-          Startup / Company Name <span className={styles.requiredMark}>*</span>
+          Company / Entity Name <span className={styles.requiredMark}>*</span>
         </label>
         <input
           ref={companyRef}
@@ -221,7 +221,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           name="companyName"
           value={formData.companyName}
           onChange={handleInputChange}
-          placeholder="e.g. Acme Technologies Pvt Ltd"
+          placeholder="e.g. Acme Enterprises Pvt Ltd or Individual"
           className={`${styles.input} ${errors.companyName ? styles.inputError : ''}`}
           aria-required="true"
           aria-invalid={errors.companyName ? 'true' : 'false'}
@@ -234,10 +234,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         )}
       </div>
 
-      {/* Advisory Requirement */}
+      {/* Primary Requirement */}
       <div className={styles.fieldGroup}>
         <label htmlFor="consultation-service" className={styles.label}>
-          Primary Requirement <span className={styles.requiredMark}>*</span>
+          Primary Filing Requirement <span className={styles.requiredMark}>*</span>
         </label>
         <div className={styles.selectWrapper}>
           <select
@@ -251,8 +251,8 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
             aria-invalid={errors.serviceType ? 'true' : 'false'}
             aria-describedby={errors.serviceType ? 'err-service' : undefined}
           >
-            <option value="">Select funding track...</option>
-            {FUNDING_SERVICES.map((srv) => (
+            <option value="">Select filing service...</option>
+            {FILING_SERVICES.map((srv) => (
               <option key={srv} value={srv}>
                 {srv}
               </option>
@@ -266,10 +266,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         )}
       </div>
 
-      {/* Capital Range (Optional) */}
+      {/* Entity Type (Optional) */}
       <div className={styles.fieldGroup}>
         <label htmlFor="consultation-capital" className={styles.label}>
-          Target Capital Raise <span className={styles.optionalMark}>(Optional)</span>
+          Entity Type <span className={styles.optionalMark}>(Optional)</span>
         </label>
         <div className={styles.selectWrapper}>
           <select
@@ -279,10 +279,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
             onChange={handleInputChange}
             className={styles.select}
           >
-            <option value="">Select target amount...</option>
-            {CAPITAL_RANGES.map((rng) => (
-              <option key={rng} value={rng}>
-                {rng}
+            <option value="">Select entity structure...</option>
+            {ENTITY_TYPES.map((ent) => (
+              <option key={ent} value={ent}>
+                {ent}
               </option>
             ))}
           </select>
@@ -293,7 +293,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
       <div className={styles.fieldGroup}>
         <div className={styles.labelRow}>
           <label htmlFor="consultation-message" className={styles.label}>
-            Sector, Stage &amp; Traction <span className={styles.optionalMark}>(Optional)</span>
+            Filing Details or Questions <span className={styles.optionalMark}>(Optional)</span>
           </label>
           <span className={styles.charCount}>
             {(formData.message || '').length}/400
@@ -305,7 +305,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           name="message"
           value={formData.message}
           onChange={handleInputChange}
-          placeholder="e.g. AI-driven logistics, ₹40L ARR, seeking seed capital or CGTMSE grant..."
+          placeholder="e.g. Need GST registration for new proprietorship, or query regarding pending ROC annual filings..."
           rows={3}
           maxLength={400}
           className={`${styles.textarea} ${errors.message ? styles.inputError : ''}`}
@@ -329,10 +329,10 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         {isSubmitting ? (
           <span className={styles.submittingContent}>
             <span className={styles.spinner} aria-hidden="true" />
-            Submitting Roadmap Request...
+            Submitting Request...
           </span>
         ) : (
-          'Book Free 1-Hour Strategy Call'
+          'Book a Free Consultation'
         )}
       </button>
     </form>

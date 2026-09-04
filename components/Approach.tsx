@@ -4,24 +4,24 @@ import styles from './Approach.module.css'
 const PILLARS = [
   {
     number: '01',
-    title: 'Expert Guidance Upfront',
+    title: 'Plain-Language Guidance',
     description:
-      'Free one-hour consultation. We evaluate your funding stage, stress-test your business model, and outline the exact non-dilutive and equity capital options available to you.',
-    highlight: 'Comprehensive stage & eligibility audit',
+      "You'll understand what's being filed and why, not just sign where told. We deconstruct statutory requirements and forms into clear, actionable steps.",
+    highlight: 'Clear explanations on every form',
   },
   {
     number: '02',
-    title: 'Full Cycle Hand Holding',
+    title: 'Deadlines Tracked for You',
     description:
-      'Present at term sheet structuring, investor due diligence, and final sanction. Our team works alongside you until funds are officially disbursed into your company account.',
-    highlight: 'Present through term sheet to disbursement',
+      'A structured compliance calendar so nothing is missed after the first filing. Proactive reminders before critical due dates to prevent penalty fees.',
+    highlight: 'Proactive deadline tracking',
   },
   {
     number: '03',
-    title: 'Diverse Portfolio, All Stages',
+    title: 'Clear Scope Before We Start',
     description:
-      'Direct relationships with 500+ active angel syndicates, institutional venture funds, and family offices spanning DeepTech, CleanTech, Healthcare, D2C, and B2B SaaS.',
-    highlight: '500+ active institutional & angel connections',
+      "You'll know exactly what's included before any work begins. Upfront document requirements and transparent processes with zero hidden surprises.",
+    highlight: 'Transparent scope upfront',
   },
 ]
 
@@ -30,12 +30,12 @@ export default function Approach() {
     <section id="about" className="section" aria-labelledby="about-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Who We Are</span>
+          <span className="section-eyebrow">Our Approach</span>
           <h2 id="about-heading" className="section-title">
-            Raising capital? It starts here.
+            Compliance without the confusion.
           </h2>
           <p className="section-subtitle">
-            Transparent pricing. Experienced hands. Proven results. Your financial models and investor relations handled by seasoned analysts and incubator advisors.
+            We believe filing your taxes and business documents should be straightforward, accurate, and completely transparent.
           </p>
         </div>
 

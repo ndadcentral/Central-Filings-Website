@@ -27,40 +27,40 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'ConsultUp India — Startup Funding & Capital Advisory',
+  title: 'Central Filling — Business Registration, Tax & ROC Compliance Filings',
   description:
-    'Turn scattered grants, schemes, and investors into one disciplined funding roadmap. ConsultUp India helps founders & MSMEs get investor-ready with non-dilutive capital, institutional debt, and curated investor introductions.',
+    'Business registration, tax, and compliance filings for individuals, startups, and MSMEs across India. Explained in plain language, filed correctly the first time.',
   keywords: [
-    'startup funding',
-    'government grants',
-    'DPIIT recognition',
-    'Startup India',
-    'investor connections',
-    'MSME loans',
-    'CGTMSE',
-    'venture capital',
-    'capital advisory India',
-    'ConsultUp India',
+    'business registration',
+    'GST filing',
+    'ROC compliance',
+    'income tax filing',
+    'LLP incorporation',
+    'company registration',
+    'MSME Udyam registration',
+    'trademark filing',
+    'Startup India DPIIT',
+    'Central Filling',
   ],
-  authors: [{ name: 'ConsultUp India' }],
-  metadataBase: new URL('https://consultupindia.com'),
+  authors: [{ name: 'Central Filling' }],
+  metadataBase: new URL('https://centralfilling.in'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'ConsultUp India — Structured Capital Advisory',
+    title: 'Central Filling — Every filing, done right and on time.',
     description:
-      'We turn the scattered maze of grants, schemes, investors, and compliance into one disciplined funding roadmap — built on real documentation, financial modeling, and investor-grade positioning.',
-    url: 'https://consultupindia.com',
-    siteName: 'ConsultUp India',
+      'Central Filling handles business registration, tax, and compliance filings for individuals, startups, and MSMEs — explained in plain language, filed correctly the first time.',
+    url: 'https://centralfilling.in',
+    siteName: 'Central Filling',
     locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ConsultUp India — Structured Capital Advisory',
+    title: 'Central Filling — Business Registration, Tax & ROC Compliance Filings',
     description:
-      'Turn scattered grants, schemes, and investors into one disciplined funding roadmap.',
+      'Every filing, done right and on time. For individuals, startups, and MSMEs across India.',
   },
   robots: {
     index: true,
