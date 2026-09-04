@@ -70,7 +70,21 @@ export default function GradientBackground() {
     }
 
     mediaQuery.addEventListener('change', handleMotionChange)
-    return () => mediaQuery.removeEventListener('change', handleMotionChange)
+
+    // Interactive pointer movement tracking for luminous aura spotlight
+    const handlePointerMove = (e: PointerEvent) => {
+      const x = (e.clientX / window.innerWidth) * 100
+      const y = (e.clientY / window.innerHeight) * 100
+      document.documentElement.style.setProperty('--mouse-x', `${x.toFixed(1)}%`)
+      document.documentElement.style.setProperty('--mouse-y', `${y.toFixed(1)}%`)
+    }
+
+    window.addEventListener('pointermove', handlePointerMove, { passive: true })
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleMotionChange)
+      window.removeEventListener('pointermove', handlePointerMove)
+    }
   }, [])
 
   return (
@@ -78,13 +92,18 @@ export default function GradientBackground() {
       {/* Deep dark obsidian base with subtle moody emerald ambient lighting */}
       <div className={styles.cssFallbackGradient} />
 
-      {/* Toned-down, deep atmospheric ambient orbs */}
-      <div className={styles.ambientOrbTop} />
-      <div className={styles.ambientOrbBottom} />
+      {/* Floating Animated Aurora Nebula Orbs */}
+      <div className={styles.ambientOrb1} />
+      <div className={styles.ambientOrb2} />
+      <div className={styles.ambientOrb3} />
 
-      {/* Subtle organic film grain texture overlay */}
-      <div className={styles.noiseOverlay} />
+      {/* Interactive Cursor Spotlight Follower */}
+      <div className={styles.mouseSpotlight} />
 
+      {/* Cyber Fintech Geometric Tech Grid Overlay */}
+      <div className={styles.gridOverlay} />
+
+      {/* 3D Liquid Fluid Shader Wave (Client Component) */}
       {mounted && hasWebGL && (
         <WebGLErrorBoundary fallback={<div className={styles.cssFallbackGradient} />}>
           <ShaderGradientCanvas
@@ -95,39 +114,46 @@ export default function GradientBackground() {
               width: '100%',
               height: '100%',
               pointerEvents: 'none',
-              opacity: 0.38, // Subtle, dark, moody background flow
+              opacity: 0.56, // Eye-catching, rich liquid silk glow
+              mixBlendMode: 'screen',
             }}
             pixelDensity={typeof window !== 'undefined' && window.devicePixelRatio > 1.5 ? 1.5 : 1}
             fov={45}
           >
             <ShaderGradient
-              type="plane"
+              type="waterPlane"
               shader="defaults"
               animate={reducedMotion ? 'off' : 'on'}
               grain="on"
-              uSpeed={reducedMotion ? 0 : 0.18}
-              uStrength={2.8}
-              uDensity={1.25}
-              uFrequency={4.8}
-              color1="#040c0a" // Deep obsidian
-              color2="#0c2e28" // Dark rich emerald
-              color3="#154d43" // Deep forest teal (never blinding neon)
-              cDistance={4.2}
-              cPolarAngle={85}
-              cAzimuthAngle={175}
+              uSpeed={reducedMotion ? 0 : 0.24}
+              uStrength={3.4}
+              uDensity={1.35}
+              uFrequency={5.2}
+              color1="#021713" // Deep obsidian jade base
+              color2="#0a4c3e" // Rich radiant seafoam emerald
+              color3="#15947e" // Luminous glowing seafoam teal highlight
+              cDistance={3.8}
+              cPolarAngle={80}
+              cAzimuthAngle={170}
               lightType="3d"
-              brightness={0.82} // Darkened lighting to preserve text contrast
-              reflection={0.06}
+              brightness={1.12} // Vibrant lighting with rich contrast
+              reflection={0.14}
               envPreset="city"
-              positionX={-0.2}
-              positionY={0}
-              rotationX={10}
+              positionX={-0.1}
+              positionY={0.05}
+              rotationX={12}
               rotationY={10}
-              rotationZ={25}
+              rotationZ={18}
             />
           </ShaderGradientCanvas>
         </WebGLErrorBoundary>
       )}
+
+      {/* Dark Readability Vignette Shield protecting centered text */}
+      <div className={styles.readabilityShield} />
+
+      {/* Subtle organic film grain texture overlay */}
+      <div className={styles.noiseOverlay} />
     </div>
   )
 }

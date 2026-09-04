@@ -31,23 +31,54 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: rgba(18, 67, 61, 0.45);
-  border: 1px solid rgba(143, 224, 210, 0.35);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 20px rgba(6, 17, 15, 0.4);
+  background: rgba(10, 32, 28, 0.7);
+  border: 1px solid rgba(143, 224, 210, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 8px 28px rgba(3, 10, 8, 0.5), 0 0 16px rgba(45, 212, 191, 0.15);
   padding: 8px 18px;
   border-radius: var(--radius-pill);
   margin-bottom: 28px;
   max-width: 100%;
+  animation: floatBadge 5s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 .statusDot {
+  position: relative;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--teal-300);
-  box-shadow: 0 0 10px var(--teal-300);
+  background-color: #34d399;
+  box-shadow: 0 0 12px #34d399;
+}
+
+.statusDot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid #34d399;
+  animation: radarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(0.7);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
 }
 
 .statusLabel {
@@ -59,16 +90,41 @@
 .ratingBadge {
   font-size: 0.78rem;
   font-weight: 600;
-  color: #ffb199;
-  background: rgba(255, 138, 101, 0.12);
-  border: 1px solid rgba(255, 138, 101, 0.3);
+  color: #fed7aa;
+  background: rgba(249, 115, 22, 0.14);
+  border: 1px solid rgba(249, 115, 22, 0.4);
   padding: 3px 10px;
   border-radius: var(--radius-pill);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.2);
 }
 
 .highlightText {
-  color: var(--coral-400);
+  background: linear-gradient(
+    135deg,
+    #5eead4 0%,
+    #2dd4bf 20%,
+    #38bdf8 40%,
+    #a7f3d0 60%,
+    #5eead4 80%,
+    #34d399 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerText 5s linear infinite;
+  display: inline-block;
   font-style: italic;
+  filter: drop-shadow(0 0 18px rgba(45, 212, 191, 0.45));
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 250% center;
+  }
 }
 
 .heroHeading {

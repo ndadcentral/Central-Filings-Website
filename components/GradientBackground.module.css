@@ -7,49 +7,152 @@
   z-index: -2;
   pointer-events: none;
   overflow: hidden;
-  background-color: #040908;
+  background-color: #030807;
 }
 
 .cssFallbackGradient {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse at 20% 18%, rgba(18, 67, 61, 0.22) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 32%, rgba(12, 46, 40, 0.28) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 80%, rgba(15, 56, 48, 0.18) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, #081513 0%, #040908 100%);
+    radial-gradient(ellipse at 15% 15%, rgba(16, 185, 129, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 30%, rgba(6, 182, 212, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 85%, rgba(13, 148, 136, 0.24) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, #061512 0%, #030807 100%);
   width: 100%;
   height: 100%;
 }
 
-.ambientOrbTop {
+/* Floating Animated Aurora Nebula Orbs */
+.ambientOrb1 {
   position: absolute;
-  top: -15%;
-  left: 10%;
-  width: 50vw;
-  height: 50vw;
-  max-width: 550px;
-  max-height: 550px;
+  top: -8%;
+  left: 12%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 650px;
+  max-height: 650px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(18, 67, 61, 0.12) 0%, transparent 65%);
-  filter: blur(55px);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(13, 148, 136, 0.16) 42%, transparent 70%);
+  filter: blur(75px);
+  animation: floatOrb1 20s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
-.ambientOrbBottom {
+.ambientOrb2 {
   position: absolute;
-  bottom: -15%;
-  right: 5%;
-  width: 50vw;
-  height: 50vw;
-  max-width: 550px;
-  max-height: 550px;
+  bottom: 8%;
+  right: -5%;
+  width: 52vw;
+  height: 52vw;
+  max-width: 620px;
+  max-height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(12, 46, 40, 0.14) 0%, transparent 65%);
-  filter: blur(60px);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.26) 0%, rgba(20, 184, 166, 0.14) 45%, transparent 70%);
+  filter: blur(80px);
+  animation: floatOrb2 24s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
+.ambientOrb3 {
+  position: absolute;
+  top: 42%;
+  left: 48%;
+  width: 48vw;
+  height: 48vw;
+  max-width: 520px;
+  max-height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.22) 0%, rgba(16, 185, 129, 0.1) 40%, transparent 68%);
+  filter: blur(85px);
+  animation: floatOrb3 18s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes floatOrb1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(7vw, 10vh) scale(1.15);
+  }
+  100% {
+    transform: translate(-5vw, 6vh) scale(0.92);
+  }
+}
+
+@keyframes floatOrb2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-9vw, -12vh) scale(1.18);
+  }
+  100% {
+    transform: translate(5vw, -5vh) scale(0.94);
+  }
+}
+
+@keyframes floatOrb3 {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-42%, -38%) scale(1.22);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-56%, -58%) scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* Interactive Cursor Spotlight Aura */
+.mouseSpotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    650px circle at var(--mouse-x, 50%) var(--mouse-y, 35%),
+    rgba(20, 184, 166, 0.2),
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* Cyber Fintech Geometric Tech Grid Overlay */
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(45, 212, 191, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(45, 212, 191, 0.07) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 35%, black 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 35%, black 25%, transparent 85%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dark Readability Vignette Shield protecting centered text */
+.readabilityShield {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse 85% 65% at 50% 38%,
+    rgba(3, 8, 7, 0.22) 0%,
+    rgba(3, 8, 7, 0.78) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Subtle organic film grain texture overlay */
 .noiseOverlay {
   position: absolute;
   inset: 0;
@@ -57,5 +160,5 @@
   height: 100%;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
 }

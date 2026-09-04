@@ -35,13 +35,15 @@
   display: inline-flex;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--teal-300);
-  background: rgba(143, 224, 210, 0.12);
-  border: 1px solid rgba(143, 224, 210, 0.25);
-  padding: 4px 12px;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  box-shadow: 0 0 14px rgba(52, 211, 153, 0.25);
+  padding: 4px 14px;
   border-radius: var(--radius-pill);
   margin-bottom: 20px;
   width: fit-content;
+  letter-spacing: 0.06em;
 }
 
 .stepTitle {

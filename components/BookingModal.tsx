@@ -9,7 +9,7 @@ interface BookingModalProps {
   onClose: () => void
 }
 
-export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
+export function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const modalRef = useRef<HTMLDivElement>(null)
   const closeBtnRef = useRef<HTMLButtonElement>(null)
 
@@ -116,3 +116,5 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     </div>
   )
 }
+
+export default BookingModal

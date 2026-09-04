@@ -1,15 +1,15 @@
 'use client'
 
 import React, { createContext, useContext, useState, useCallback, useRef } from 'react'
-import BookingModal from './BookingModal'
+import BookingModal from '@/components/BookingModal'
 
-interface ModalContextType {
+export interface ModalContextType {
   isOpen: boolean
   openModal: (triggerEl?: HTMLElement | null) => void
   closeModal: () => void
 }
 
-const ModalContext = createContext<ModalContextType | undefined>(undefined)
+export const ModalContext = createContext<ModalContextType | undefined>(undefined)
 
 export function ModalProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
