@@ -1,0 +1,54 @@
+.ctaBanner {
+  background: radial-gradient(ellipse at 80% 0%, rgba(47, 163, 157, 0.25) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 100%, rgba(255, 138, 101, 0.15) 0%, transparent 50%),
+              rgba(10, 27, 24, 0.75);
+  border: 1px solid rgba(143, 224, 210, 0.3);
+  padding: 64px 32px;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  .ctaBanner {
+    padding: 44px 20px;
+  }
+}
+
+.ctaContent {
+  max-width: 640px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ctaTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 600;
+  color: var(--paper);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.ctaText {
+  font-size: 1.05rem;
+  color: var(--paper-dim);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .ctaActions > * {
+    width: 100%;
+    max-width: 320px;
+  }
+}
