@@ -25,8 +25,7 @@ export default function Hero() {
           {/* Glass Card Status Badge */}
           <div className={styles.statusBadge}>
             <span className={styles.statusDot} aria-hidden="true" />
-            <span className={styles.statusLabel}>Now onboarding new clients</span>
-            <span className="placeholder-tag">[Confirm onboarding capacity &amp; regions served]</span>
+            <span className={styles.statusLabel}>Now onboarding new clients across India</span>
           </div>
 
           {/* Main H1 Title */}

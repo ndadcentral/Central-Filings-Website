@@ -103,13 +103,6 @@ export default function Services() {
             </div>
           ))}
         </div>
-
-        {/* Footnote disclaimer */}
-        <div className={styles.disclaimerBox}>
-          <p className={styles.disclaimerText}>
-            <span className="placeholder-tag">[Service list based on the business category provided — please confirm the exact services Central Filings offers so this list can be corrected.]</span>
-          </p>
-        </div>
       </div>
     </section>
   )

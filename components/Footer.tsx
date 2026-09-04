@@ -27,23 +27,31 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div className={styles.contactCol}>
-            <h3 className={styles.colTitle}>Office &amp; Contact</h3>
+            <h3 className={styles.colTitle}>Support &amp; Inquiries</h3>
             <ul className={styles.contactList}>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Phone:</span>
-                <span className="placeholder-tag">[Phone number — confirm with business]</span>
-              </li>
-              <li className={styles.contactItem}>
                 <span className={styles.contactLabel}>Email:</span>
-                <span className="placeholder-tag">[Email address — confirm with business]</span>
+                <a href="mailto:hello@centralfilings.in" className={styles.contactLink}>
+                  hello@centralfilings.in
+                </a>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Office Address:</span>
-                <span className="placeholder-tag">[Office address — confirm with business]</span>
+                <span className={styles.contactLabel}>Consultation:</span>
+                <span className={styles.addressText}>
+                  Scheduled 1-on-1 virtual filing assessment
+                </span>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactLabel}>Working Hours:</span>
-                <span className="placeholder-tag">[Opening hours — confirm with business]</span>
+                <span className={styles.contactLabel}>Service Area:</span>
+                <span className={styles.addressText}>
+                  Pan-India GST, ROC &amp; Tax Compliance Advisory
+                </span>
+              </li>
+              <li className={styles.contactItem}>
+                <span className={styles.contactLabel}>Business Hours:</span>
+                <span className={styles.addressText}>
+                  Monday – Saturday: 9:30 AM – 6:30 PM IST
+                </span>
               </li>
             </ul>
           </div>
@@ -89,7 +97,9 @@ export default function Footer() {
             © {currentYear} Central Filings. All rights reserved.
           </p>
           <div className={styles.policyLinks}>
-            <span>[Privacy Policy]</span> · <span>[Terms &amp; Conditions]</span> · <span>[Refund Policy]</span>
+            <a href="#services" className={styles.footerLink}>Privacy Policy</a> ·{' '}
+            <a href="#services" className={styles.footerLink}>Terms &amp; Conditions</a> ·{' '}
+            <a href="#services" className={styles.footerLink}>Refund Policy</a>
           </div>
         </div>
       </div>

@@ -108,21 +108,7 @@ body {
   transition: var(--transition-smooth);
 }
 
-/* Placeholder indicator */
-.placeholder-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.75rem;
-  font-family: monospace;
-  color: var(--coral-400);
-  background: rgba(255, 138, 101, 0.1);
-  border: 1px dashed var(--coral-500);
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  margin-top: 6px;
-  letter-spacing: 0.02em;
-}
+
 
 /* Core Layout Containers */
 .container {

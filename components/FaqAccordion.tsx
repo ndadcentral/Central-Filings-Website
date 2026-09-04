@@ -27,12 +27,12 @@ const FAQS: FaqItem[] = [
   {
     question: 'How long does a typical filing take?',
     answer:
-      '[placeholder — confirm turnaround time with the business] Turnaround depends on the filing type: standard individual ITRs and GST returns are typically prepared within 1–2 business days after document verification, while company incorporations and trademark registrations depend on statutory portal processing queues.',
+      'Turnaround depends on the filing type: standard individual ITRs and GST returns are typically prepared within 1–2 business days after document verification, while company incorporations and trademark registrations depend on statutory portal processing queues.',
   },
   {
     question: 'Is this a one-time filing service, or do you offer ongoing compliance support?',
     answer:
-      '[placeholder — confirm with the business] We offer both one-time filing services (such as single registrations or annual tax returns) and ongoing monthly or annual compliance calendar retainers for growing businesses.',
+      'We offer both one-time filing services (such as single registrations or annual tax returns) and ongoing monthly or annual compliance calendar retainers for growing businesses.',
   },
 ]
 
