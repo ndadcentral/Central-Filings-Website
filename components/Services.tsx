@@ -107,7 +107,7 @@ export default function Services() {
         {/* Footnote disclaimer */}
         <div className={styles.disclaimerBox}>
           <p className={styles.disclaimerText}>
-            <span className="placeholder-tag">[Service list based on the business category provided — please confirm the exact services Central Filling offers so this list can be corrected.]</span>
+            <span className="placeholder-tag">[Service list based on the business category provided — please confirm the exact services Central Fillings offers so this list can be corrected.]</span>
           </p>
         </div>
       </div>

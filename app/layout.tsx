@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Central Filling — Business Registration, Tax & ROC Compliance Filings',
+  title: 'Central Fillings — Business Registration, Tax & ROC Compliance Filings',
   description:
     'Business registration, tax, and compliance filings for individuals, startups, and MSMEs across India. Explained in plain language, filed correctly the first time.',
   keywords: [
@@ -40,25 +40,25 @@ export const metadata: Metadata = {
     'MSME Udyam registration',
     'trademark filing',
     'Startup India DPIIT',
-    'Central Filling',
+    'Central Fillings',
   ],
-  authors: [{ name: 'Central Filling' }],
+  authors: [{ name: 'Central Fillings' }],
   metadataBase: new URL('https://centralfilling.in'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Central Filling — Every filing, done right and on time.',
+    title: 'Central Fillings — Every filing, done right and on time.',
     description:
-      'Central Filling handles business registration, tax, and compliance filings for individuals, startups, and MSMEs — explained in plain language, filed correctly the first time.',
+      'Central Fillings handles business registration, tax, and compliance filings for individuals, startups, and MSMEs — explained in plain language, filed correctly the first time.',
     url: 'https://centralfilling.in',
-    siteName: 'Central Filling',
+    siteName: 'Central Fillings',
     locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Central Filling — Business Registration, Tax & ROC Compliance Filings',
+    title: 'Central Fillings — Business Registration, Tax & ROC Compliance Filings',
     description:
       'Every filing, done right and on time. For individuals, startups, and MSMEs across India.',
   },

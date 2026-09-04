@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -11,14 +12,13 @@ export default function Footer() {
           {/* Brand Col */}
           <div className={styles.brandCol}>
             <div className={styles.brandWordmark}>
-              <span className={styles.brandIcon} aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <path d="m9 15 2 2 4-4" />
-                </svg>
-              </span>
-              <span className={styles.brandName}>Central Filling</span>
+              <Image
+                src="/logo-dark.png"
+                alt="Central Fillings"
+                width={190}
+                height={70}
+                className={styles.footerLogoImg}
+              />
             </div>
             <p className={styles.brandDesc}>
               Business registration, tax, and compliance filings — for individuals, startups, and MSMEs across India. Explained in plain language, filed correctly the first time.
@@ -80,13 +80,13 @@ export default function Footer() {
         {/* Disclaimer & Bottom Bar */}
         <div className={styles.disclaimerContainer}>
           <p className={styles.disclaimerText}>
-            <strong>Disclaimer:</strong> Central Filling is an independent corporate, tax, and compliance advisory service provider. We are not a government agency, department, or statutory portal. All filings are submitted through respective official government portals on behalf of our clients.
+            <strong>Disclaimer:</strong> Central Fillings is an independent corporate, tax, and compliance advisory service provider. We are not a government agency, department, or statutory portal. All filings are submitted through respective official government portals on behalf of our clients.
           </p>
         </div>
 
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © {currentYear} Central Filling. All rights reserved.
+            © {currentYear} Central Fillings. All rights reserved.
           </p>
           <div className={styles.policyLinks}>
             <span>[Privacy Policy]</span> · <span>[Terms &amp; Conditions]</span> · <span>[Refund Policy]</span>

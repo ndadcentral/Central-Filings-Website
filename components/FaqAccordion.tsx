@@ -17,7 +17,7 @@ const FAQS: FaqItem[] = [
   {
     question: 'Do you handle GST registration and ongoing GST filing?',
     answer:
-      'Yes. Central Filling handles both initial GST registration (generating your 15-digit GSTIN) and recurring monthly or quarterly GST returns (GSTR-1, GSTR-3B, and annual GSTR-9). We also perform input tax credit (ITC) reconciliation with GSTR-2B to ensure you claim eligible deductions without mismatch notices.',
+      'Yes. Central Fillings handles both initial GST registration (generating your 15-digit GSTIN) and recurring monthly or quarterly GST returns (GSTR-1, GSTR-3B, and annual GSTR-9). We also perform input tax credit (ITC) reconciliation with GSTR-2B to ensure you claim eligible deductions without mismatch notices.',
   },
   {
     question: 'Do you support individual income tax filing, or only businesses?',
