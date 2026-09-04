@@ -13,7 +13,7 @@ export default function Hero() {
             <div className={styles.emblemBadge}>
               <Image
                 src="/logo-emblem.png"
-                alt="Central Fillings emblem"
+                alt="Central Filings emblem"
                 width={52}
                 height={52}
                 className={styles.heroEmblemImg}
@@ -36,7 +36,7 @@ export default function Hero() {
           </h1>
 
           <p className={styles.heroSubhead}>
-            Central Fillings handles business registration, tax, and compliance filings for individuals, startups, and MSMEs — explained in plain language, filed correctly the first time.
+            Central Filings handles business registration, tax, and compliance filings for individuals, startups, and MSMEs — explained in plain language, filed correctly the first time.
           </p>
 
           {/* Action CTAs */}

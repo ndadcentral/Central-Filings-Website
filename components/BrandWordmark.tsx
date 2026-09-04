@@ -5,18 +5,18 @@ import styles from './FloatingElements.module.css'
 export default function BrandWordmark() {
   return (
     <div className={styles.brandContainer}>
-      <a href="#" className={styles.brandLink} aria-label="Central Fillings — Home">
+      <a href="#" className={styles.brandLink} aria-label="Central Filings — Home">
         <span className={styles.brandIcon} aria-hidden="true">
           <Image
             src="/logo-emblem.png"
-            alt="Central Fillings emblem"
+            alt="Central Filings emblem"
             width={24}
             height={24}
             className={styles.brandLogoImg}
             priority
           />
         </span>
-        <span className={styles.brandText}>Central Fillings</span>
+        <span className={styles.brandText}>Central Filings</span>
       </a>
     </div>
   )

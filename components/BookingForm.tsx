@@ -127,7 +127,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         <h3 className={styles.successTitle}>Consultation Request Received</h3>
         <p className={styles.successText}>{successMessage}</p>
         <div className={styles.demoNotice}>
-          <strong>CENTRAL FILLINGS:</strong> Your consultation request has been queued. A filing specialist will connect within 24 hours to review your requirements and answer your questions.
+          <strong>CENTRAL FILINGS:</strong> Your consultation request has been queued. A filing specialist will connect within 24 hours to review your requirements and answer your questions.
         </div>
         <button
           type="button"

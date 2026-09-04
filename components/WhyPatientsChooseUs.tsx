@@ -30,9 +30,9 @@ export default function WhyPatientsChooseUs() {
     <section className="section" aria-labelledby="why-clients-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Why Central Fillings</span>
+          <span className="section-eyebrow">Why Central Filings</span>
           <h2 id="why-clients-heading" className="section-title">
-            Why clients choose Central Fillings.
+            Why clients choose Central Filings.
           </h2>
           <p className="section-subtitle">
             Straightforward filing support built on plain language, proactive deadline tracking, and dependable execution.

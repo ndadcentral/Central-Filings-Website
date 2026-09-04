@@ -14,7 +14,7 @@ export default function Footer() {
             <div className={styles.brandWordmark}>
               <Image
                 src="/logo-dark.png"
-                alt="Central Fillings"
+                alt="Central Filings"
                 width={190}
                 height={70}
                 className={styles.footerLogoImg}
@@ -80,13 +80,13 @@ export default function Footer() {
         {/* Disclaimer & Bottom Bar */}
         <div className={styles.disclaimerContainer}>
           <p className={styles.disclaimerText}>
-            <strong>Disclaimer:</strong> Central Fillings is an independent corporate, tax, and compliance advisory service provider. We are not a government agency, department, or statutory portal. All filings are submitted through respective official government portals on behalf of our clients.
+            <strong>Disclaimer:</strong> Central Filings is an independent corporate, tax, and compliance advisory service provider. We are not a government agency, department, or statutory portal. All filings are submitted through respective official government portals on behalf of our clients.
           </p>
         </div>
 
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © {currentYear} Central Fillings. All rights reserved.
+            © {currentYear} Central Filings. All rights reserved.
           </p>
           <div className={styles.policyLinks}>
             <span>[Privacy Policy]</span> · <span>[Terms &amp; Conditions]</span> · <span>[Refund Policy]</span>

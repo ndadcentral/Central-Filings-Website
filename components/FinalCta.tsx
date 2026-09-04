@@ -15,7 +15,7 @@ export default function FinalCta() {
               Let&apos;s get it filed properly.
             </h2>
             <p className={styles.ctaText}>
-              Whether you need an individual tax return filed, a company incorporated, or ongoing GST and ROC compliance managed, Central Fillings is ready.
+              Whether you need an individual tax return filed, a company incorporated, or ongoing GST and ROC compliance managed, Central Filings is ready.
             </p>
             <div className={styles.ctaActions}>
               <OpenBookingButton className="btn-primary">
