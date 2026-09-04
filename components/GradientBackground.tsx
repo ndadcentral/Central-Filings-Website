@@ -4,7 +4,7 @@ import React, { useEffect, useState, Component, ErrorInfo, ReactNode } from 'rea
 import dynamic from 'next/dynamic'
 import styles from './GradientBackground.module.css'
 
-// Dynamic import with SSR disabled to prevent server-side evaluation of Three.js / Canvas
+// Dynamic import with SSR disabled
 const ShaderGradientCanvas = dynamic(
   () => import('@shadergradient/react').then((mod) => mod.ShaderGradientCanvas),
   { ssr: false }
@@ -30,7 +30,7 @@ class WebGLErrorBoundary extends Component<
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.warn('WebGL context failed to initialize; falling back to CSS gradient.', error, errorInfo)
+    console.warn('WebGL context failed to initialize; falling back to dark CSS gradient.', error, errorInfo)
   }
 
   render() {
@@ -75,10 +75,10 @@ export default function GradientBackground() {
 
   return (
     <div className={styles.canvasContainer} aria-hidden="true">
-      {/* High-fidelity CSS Gradient with rich emerald & deep jade tones */}
+      {/* Deep dark obsidian base with subtle moody emerald ambient lighting */}
       <div className={styles.cssFallbackGradient} />
 
-      {/* Vibrant ambient light orbs for depth */}
+      {/* Toned-down, deep atmospheric ambient orbs */}
       <div className={styles.ambientOrbTop} />
       <div className={styles.ambientOrbBottom} />
 
@@ -95,7 +95,7 @@ export default function GradientBackground() {
               width: '100%',
               height: '100%',
               pointerEvents: 'none',
-              opacity: 0.88,
+              opacity: 0.38, // Subtle, dark, moody background flow
             }}
             pixelDensity={typeof window !== 'undefined' && window.devicePixelRatio > 1.5 ? 1.5 : 1}
             fov={45}
@@ -105,25 +105,25 @@ export default function GradientBackground() {
               shader="defaults"
               animate={reducedMotion ? 'off' : 'on'}
               grain="on"
-              uSpeed={reducedMotion ? 0 : 0.22}
-              uStrength={3.2}
-              uDensity={1.35}
-              uFrequency={5.2}
-              color1="#0c3832"
-              color2="#1e847a"
-              color3="#7ee3d5"
-              cDistance={3.8}
+              uSpeed={reducedMotion ? 0 : 0.18}
+              uStrength={2.8}
+              uDensity={1.25}
+              uFrequency={4.8}
+              color1="#040c0a" // Deep obsidian
+              color2="#0c2e28" // Dark rich emerald
+              color3="#154d43" // Deep forest teal (never blinding neon)
+              cDistance={4.2}
               cPolarAngle={85}
               cAzimuthAngle={175}
               lightType="3d"
-              brightness={1.22}
-              reflection={0.14}
+              brightness={0.82} // Darkened lighting to preserve text contrast
+              reflection={0.06}
               envPreset="city"
-              positionX={-0.3}
-              positionY={0.1}
+              positionX={-0.2}
+              positionY={0}
               rotationX={10}
-              rotationY={15}
-              rotationZ={30}
+              rotationY={10}
+              rotationZ={25}
             />
           </ShaderGradientCanvas>
         </WebGLErrorBoundary>

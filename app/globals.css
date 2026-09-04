@@ -12,15 +12,15 @@
   --paper: #F7FBF9;
   --paper-dim: #CFE3DE;
 
-  /* Glass tokens */
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-bg-hover: rgba(255, 255, 255, 0.12);
-  --glass-border: rgba(255, 255, 255, 0.16);
+  /* Glass tokens — Dark luxury obsidian glass protecting text readability */
+  --glass-bg: rgba(9, 22, 19, 0.85);
+  --glass-bg-hover: rgba(12, 30, 26, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.12);
   --glass-border-hover: rgba(143, 224, 210, 0.35);
-  --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
-  --glass-shadow: 0 16px 36px -8px rgba(6, 17, 15, 0.5);
-  --glass-blur: blur(22px);
-  --glass-saturate: saturate(160%);
+  --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+  --glass-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.75);
+  --glass-blur: blur(28px);
+  --glass-saturate: saturate(140%);
 
   /* Typography */
   --font-display: var(--font-fraunces), serif;
