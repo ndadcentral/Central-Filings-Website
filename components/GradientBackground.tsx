@@ -30,7 +30,6 @@ class WebGLErrorBoundary extends Component<
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // Gracefully catch WebGL context creation failures without crashing the application
     console.warn('WebGL context failed to initialize; falling back to CSS gradient.', error, errorInfo)
   }
 
@@ -76,12 +75,15 @@ export default function GradientBackground() {
 
   return (
     <div className={styles.canvasContainer} aria-hidden="true">
-      {/* High-fidelity CSS Gradient always present as instant base and fallback */}
+      {/* High-fidelity CSS Gradient with rich emerald & deep jade tones */}
       <div className={styles.cssFallbackGradient} />
 
-      {/* Subtle organic light orbs */}
+      {/* Vibrant ambient light orbs for depth */}
       <div className={styles.ambientOrbTop} />
       <div className={styles.ambientOrbBottom} />
+
+      {/* Subtle organic film grain texture overlay */}
+      <div className={styles.noiseOverlay} />
 
       {mounted && hasWebGL && (
         <WebGLErrorBoundary fallback={<div className={styles.cssFallbackGradient} />}>
@@ -93,25 +95,35 @@ export default function GradientBackground() {
               width: '100%',
               height: '100%',
               pointerEvents: 'none',
+              opacity: 0.88,
             }}
             pixelDensity={typeof window !== 'undefined' && window.devicePixelRatio > 1.5 ? 1.5 : 1}
             fov={45}
           >
             <ShaderGradient
-              type="waterPlane"
+              type="plane"
+              shader="defaults"
               animate={reducedMotion ? 'off' : 'on'}
-              uSpeed={reducedMotion ? 0 : 0.18}
-              uStrength={2.8}
-              uDensity={1.2}
-              uFrequency={4.0}
-              color1="#06110F"
-              color2="#12433D"
-              color3="#2FA39D"
-              cDistance={4.2}
-              cPolarAngle={80}
-              cAzimuthAngle={180}
+              grain="on"
+              uSpeed={reducedMotion ? 0 : 0.22}
+              uStrength={3.2}
+              uDensity={1.35}
+              uFrequency={5.2}
+              color1="#0c3832"
+              color2="#1e847a"
+              color3="#7ee3d5"
+              cDistance={3.8}
+              cPolarAngle={85}
+              cAzimuthAngle={175}
               lightType="3d"
-              brightness={1.1}
+              brightness={1.22}
+              reflection={0.14}
+              envPreset="city"
+              positionX={-0.3}
+              positionY={0.1}
+              rotationX={10}
+              rotationY={15}
+              rotationZ={30}
             />
           </ShaderGradientCanvas>
         </WebGLErrorBoundary>
