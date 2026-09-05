@@ -2,18 +2,18 @@
   position: fixed;
   top: 20px;
   left: 24px;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .brandLink {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(10, 27, 24, 0.75);
+  background: rgba(6, 17, 15, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 8px 24px rgba(6, 17, 15, 0.4);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.5);
   padding: 8px 16px;
   border-radius: var(--radius-pill);
   text-decoration: none;
@@ -22,7 +22,7 @@
 }
 
 .brandLink:hover {
-  background: rgba(18, 67, 61, 0.85);
+  background: rgba(14, 42, 38, 0.98);
   border-color: rgba(143, 224, 210, 0.35);
   transform: translateY(-1px);
 }
@@ -53,18 +53,18 @@
   position: fixed;
   top: 20px;
   right: 24px;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .floatingButton {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(18, 67, 61, 0.65);
-  border: 1px solid rgba(143, 224, 210, 0.45);
+  background: rgba(11, 38, 34, 0.94);
+  border: 1px solid rgba(143, 224, 210, 0.5);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3), 0 8px 24px rgba(3, 10, 8, 0.5), 0 0 16px rgba(45, 212, 191, 0.25);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(45, 212, 191, 0.25);
   padding: 9px 20px;
   border-radius: var(--radius-pill);
   color: var(--paper);
@@ -78,17 +78,17 @@
 
 @keyframes floatingAura {
   0%, 100% {
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.28), 0 8px 24px rgba(3, 10, 8, 0.5), 0 0 14px rgba(45, 212, 191, 0.25);
-    border-color: rgba(143, 224, 210, 0.4);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.28), 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 14px rgba(45, 212, 191, 0.25);
+    border-color: rgba(143, 224, 210, 0.45);
   }
   50% {
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 12px 32px rgba(3, 10, 8, 0.6), 0 0 24px rgba(45, 212, 191, 0.55);
-    border-color: rgba(143, 224, 210, 0.7);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 12px 32px rgba(0, 0, 0, 0.7), 0 0 24px rgba(45, 212, 191, 0.55);
+    border-color: rgba(143, 224, 210, 0.75);
   }
 }
 
 .floatingButton:hover {
-  background: rgba(29, 94, 86, 0.85);
+  background: rgba(18, 56, 51, 0.98);
   border-color: var(--teal-300);
   color: #ffffff;
   transform: translateY(-2px);
@@ -119,6 +119,18 @@
   }
 }
 
+@media (max-width: 768px) {
+  .brandLink {
+    background: rgba(6, 17, 15, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .floatingButton {
+    background: rgba(9, 32, 29, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 14px rgba(45, 212, 191, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+}
+
 @media (max-width: 480px) {
   .brandContainer {
     top: 12px;
@@ -131,8 +143,11 @@
   }
 
   .brandLink {
-    padding: 6px 12px;
+    padding: 7px 12px;
     gap: 6px;
+    background: #06110f;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85);
   }
 
   .brandText {
@@ -140,8 +155,12 @@
   }
 
   .floatingButton {
-    padding: 6px 12px;
+    padding: 7px 12px;
     font-size: 0.8rem;
     gap: 6px;
+    background: #0a2420;
+    border: 1px solid rgba(143, 224, 210, 0.55);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85), 0 0 12px rgba(45, 212, 191, 0.3);
   }
 }
+

@@ -30,7 +30,6 @@ export default function Approach() {
     <section id="about" className="section" aria-labelledby="about-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Our Approach</span>
           <h2 id="about-heading" className="section-title">
             Compliance without the confusion.
           </h2>

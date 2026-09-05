@@ -84,9 +84,6 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
       >
         <div className={styles.header}>
           <div>
-            <span className="section-eyebrow" style={{ marginBottom: 4 }}>
-              Filing &amp; Compliance
-            </span>
             <h2 id="booking-modal-title" className={styles.title}>
               Book a Free Consultation
             </h2>

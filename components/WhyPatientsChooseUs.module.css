@@ -19,82 +19,29 @@
 }
 
 .trustCard {
-  padding: 32px 26px;
+  padding: 36px 30px;
   display: flex;
   flex-direction: column;
 }
 
 @media (max-width: 480px) {
   .trustCard {
-    padding: 24px 18px;
+    padding: 24px 20px;
   }
-}
-
-.cardTopRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  gap: 12px;
-}
-
-.instrumentBadge {
-  font-size: 0.76rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--teal-300);
-  background: rgba(143, 224, 210, 0.12);
-  border: 1px solid rgba(143, 224, 210, 0.28);
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-}
-
-.locationText {
-  font-size: 0.78rem;
-  color: var(--paper-dim);
-}
-
-.amountDisplay {
-  font-family: var(--font-display);
-  font-size: 2.3rem;
-  font-weight: 700;
-  color: var(--paper);
-  line-height: 1;
-  margin-bottom: 4px;
-  background: linear-gradient(135deg, #ffffff 40%, var(--teal-300) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.amountLabel {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--paper-dim);
-  margin-bottom: 18px;
 }
 
 .cardTitle {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--paper);
-  margin-bottom: 6px;
+  margin-bottom: 14px;
   line-height: 1.35;
 }
 
-.sectorTag {
-  font-size: 0.82rem;
-  color: var(--teal-300);
-  margin-bottom: 12px;
-  font-weight: 500;
+.cardDetail {
+  font-size: 0.95rem;
+  color: var(--paper-dim);
+  line-height: 1.6;
 }
 
-.cardDetail {
-  font-size: 0.88rem;
-  color: var(--paper-dim);
-  line-height: 1.55;
-  margin-top: auto;
-}

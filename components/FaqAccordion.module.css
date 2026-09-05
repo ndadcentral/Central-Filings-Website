@@ -1,15 +1,21 @@
-.faqList {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  max-width: 820px;
+.faqContainer {
+  max-width: 860px;
   margin-inline: auto;
+  overflow: hidden;
+  padding: 0;
 }
 
 .faqItem {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: var(--transition-smooth);
+  border-top: 1px solid var(--glass-border);
+  transition: background 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faqItem:first-child {
+  border-top: none;
+}
+
+.faqItem:hover {
+  background: rgba(143, 224, 210, 0.04);
 }
 
 .questionButton {
@@ -18,48 +24,36 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 22px 24px;
+  padding: 24px 30px;
   background: transparent;
   border: none;
   color: var(--paper);
   text-align: left;
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   font-weight: 600;
   cursor: pointer;
   line-height: 1.35;
-  transition: var(--transition-smooth);
-}
-
-@media (max-width: 480px) {
-  .questionButton {
-    padding: 18px 18px;
-    font-size: 1.05rem;
-  }
+  transition: color 0.2s ease;
 }
 
 .questionButton:hover {
   color: var(--teal-300);
 }
 
-.iconIndicator {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.chevronIndicator {
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: var(--teal-300);
-  transition: transform 0.25s ease;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.iconOpen {
-  transform: rotate(45deg);
-  background: rgba(143, 224, 210, 0.15);
-  border-color: var(--teal-300);
+.chevronOpen {
+  transform: rotate(180deg);
 }
 
 .answerWrapper {
@@ -74,16 +68,27 @@
 
 .answerInner {
   overflow: hidden;
-  padding-inline: 24px;
+  padding-inline: 30px;
   padding-bottom: 0px;
   transition: padding-bottom 0.28s ease;
 }
 
 .answerOpen .answerInner {
-  padding-bottom: 24px;
+  padding-bottom: 26px;
 }
 
-@media (max-width: 480px) {
+.answerText {
+  font-size: 0.95rem;
+  color: var(--paper-dim);
+  line-height: 1.65;
+}
+
+@media (max-width: 640px) {
+  .questionButton {
+    padding: 18px 18px;
+    font-size: 1.05rem;
+  }
+
   .answerInner {
     padding-inline: 18px;
   }
@@ -93,8 +98,3 @@
   }
 }
 
-.answerText {
-  font-size: 0.95rem;
-  color: var(--paper-dim);
-  line-height: 1.6;
-}

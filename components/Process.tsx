@@ -29,7 +29,6 @@ export default function Process() {
     <section id="process" className="section" aria-labelledby="process-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">How It Works</span>
           <h2 id="process-heading" className="section-title">
             A simple, four-step filing process.
           </h2>

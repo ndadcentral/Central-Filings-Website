@@ -49,7 +49,6 @@ export default function FaqAccordion() {
     <section id="faq" className="section" aria-labelledby="faq-heading">
       <div className="container">
         <div className="section-header">
-          <span className="section-eyebrow">Common Questions</span>
           <h2 id="faq-heading" className="section-title">
             Frequently asked questions about filings.
           </h2>
@@ -58,14 +57,15 @@ export default function FaqAccordion() {
           </p>
         </div>
 
-        <div className={styles.faqList}>
+        {/* Single continuous glass container with thin border-top dividers */}
+        <div className={`glass-surface ${styles.faqContainer}`}>
           {FAQS.map((faq, index) => {
             const isOpen = openIndices.includes(index)
             const questionId = `faq-btn-${index}`
             const answerId = `faq-ans-${index}`
 
             return (
-              <div key={faq.question} className={`glass-surface ${styles.faqItem}`}>
+              <div key={faq.question} className={styles.faqItem}>
                 <button
                   type="button"
                   id={questionId}
@@ -76,12 +76,11 @@ export default function FaqAccordion() {
                 >
                   <span className={styles.questionText}>{faq.question}</span>
                   <span
-                    className={`${styles.iconIndicator} ${isOpen ? styles.iconOpen : ''}`}
+                    className={`${styles.chevronIndicator} ${isOpen ? styles.chevronOpen : ''}`}
                     aria-hidden="true"
                   >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="12" y1="5" x2="12" y2="19" />
-                      <line x1="5" y1="12" x2="19" y2="12" />
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </span>
                 </button>
@@ -104,3 +103,4 @@ export default function FaqAccordion() {
     </section>
   )
 }
+

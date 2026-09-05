@@ -8,9 +8,6 @@ export default function FinalCta() {
       <div className="container">
         <div className={`glass-surface ${styles.ctaBanner}`}>
           <div className={styles.ctaContent}>
-            <span className="section-eyebrow" style={{ color: 'var(--teal-300)' }}>
-              Get Started
-            </span>
             <h2 id="cta-heading" className={styles.ctaTitle}>
               Let&apos;s get it filed properly.
             </h2>
