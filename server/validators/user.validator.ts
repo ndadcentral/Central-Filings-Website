@@ -1,57 +1,125 @@
 import { z } from 'zod';
 
-export const SignupSchema = z.object({
-  name: z.string().min(2, 'Enter your name using 2-60 letters.').max(60, 'Enter your name using 2-60 letters.').regex(/^[a-zA-Z\s]+$/, 'Enter your name using 2-60 letters.'),
-  email: z.string().email('Invalid email format').optional(),
-  phone: z.string().regex(/^[6-9]\d{9}$/, 'Enter a valid 10-digit Indian mobile number beginning with 6-9.'),
-  companyName: z.string().min(2, 'Enter a valid company or entity name.'),
-  primaryFilingRequirement: z.string().min(1, 'Select a filing requirement.'),
-  entityType: z.string().optional(),
-  city: z.string().optional(),
-  filingDetails: z.string().optional(),
-  countryCode: z.string().default('+91'),
-  timezone: z.string().default('Asia/Kolkata'),
-  route: z.string().optional(),
-  utm_source: z.string().optional(),
-  utm_medium: z.string().optional(),
-  utm_campaign: z.string().optional(),
-  utm_content: z.string().optional(),
-  platform: z.string().optional(),
-  gclid: z.string().optional(),
-  fbclid: z.string().optional(),
-  fbp: z.string().optional(),
-  fbc: z.string().optional(),
-  utm_term: z.string().optional(),
-  matchtype: z.string().optional(),
-  network: z.string().optional(),
-  device: z.string().optional(),
-  keyword: z.string().optional(),
-  placement: z.string().optional(),
-  campaignid: z.string().optional(),
-  adgroupid: z.string().optional(),
-}).transform(data => {
-  // 1. Strip the country code from the start of the phone number if the user accidentally included it
-  if (data.phone.startsWith(data.countryCode)) {
-    data.phone = data.phone.slice(data.countryCode.length);
-  }
-  // 2. Strip any leftover non-numeric characters (spaces, dashes, etc)
-  data.phone = data.phone.replace(/\D/g, '');
-  
-  return data;
-});
+/**
+ * Normalizes Indian mobile phone numbers:
+ * Removes country code prefixes (+91, 91), leading 0, and non-digit characters.
+ */
+export function normalizeIndianPhone(raw: string): string {
+  if (typeof raw !== 'string') return '';
+  let cleaned = raw.trim();
 
-export const UserDetailsQuerySchema = z.object({
-  range: z.enum(['today', 'yesterday', '7days', '1month', 'custom']).default('today'),
-  startDate: z.string().optional(),
-  endDate: z.string().optional(),
-  page: z.string().regex(/^\d+$/).default('1').transform(Number),
-  limit: z.string().regex(/^\d+$/).default('10').transform(Number),
-}).refine(data => {
-  if (data.range === 'custom') {
-    return !!data.startDate && !!data.endDate;
+  // Strip +91 if present at start
+  if (cleaned.startsWith('+91')) {
+    cleaned = cleaned.slice(3);
   }
-  return true;
-}, {
-  message: "startDate and endDate are required when range is 'custom'",
-  path: ['range'],
-});
+
+  // Strip non-digit characters
+  cleaned = cleaned.replace(/\D/g, '');
+
+  // If 12 digits starting with 91, extract last 10 digits
+  if (cleaned.length === 12 && cleaned.startsWith('91')) {
+    cleaned = cleaned.slice(2);
+  }
+
+  // If 11 digits starting with 0, extract last 10 digits
+  if (cleaned.length === 11 && cleaned.startsWith('0')) {
+    cleaned = cleaned.slice(1);
+  }
+
+  return cleaned;
+}
+
+/**
+ * Helper to sanitize optional string fields: trims and turns empty strings into undefined.
+ */
+const optionalTrimmedString = (maxLen = 200) =>
+  z.preprocess((val) => {
+    if (typeof val !== 'string') return undefined;
+    const trimmed = val.trim();
+    return trimmed.length > 0 ? trimmed : undefined;
+  }, z.string().max(maxLen).optional());
+
+/**
+ * Unicode regex for personal/business contact names (supports Indian regional letters & combining marks, Latin diacritics, spaces, hyphens, dots, apostrophes).
+ */
+const NAME_REGEX = /^[\p{L}\p{M}\s.'-]+$/u;
+
+export const SignupSchema = z
+  .object({
+    name: z.preprocess(
+      (val) => (typeof val === 'string' ? val.trim().replace(/\s+/g, ' ') : val),
+      z
+        .string()
+        .min(2, 'Enter your name using 2-60 letters.')
+        .max(60, 'Enter your name using 2-60 letters.')
+        .regex(NAME_REGEX, 'Enter your name using 2-60 letters.')
+    ),
+    phone: z.preprocess(
+      (val) => (typeof val === 'string' ? normalizeIndianPhone(val) : val),
+      z
+        .string()
+        .regex(/^[6-9]\d{9}$/, 'Enter a valid 10-digit Indian mobile number beginning with 6-9.')
+    ),
+    companyName: z.preprocess(
+      (val) => (typeof val === 'string' ? val.trim().replace(/\s+/g, ' ') : val),
+      z
+        .string()
+        .min(2, 'Enter a valid company or entity name (2-150 characters).')
+        .max(150, 'Company name cannot exceed 150 characters.')
+    ),
+    primaryFilingRequirement: z.preprocess(
+      (val) => (typeof val === 'string' ? val.trim() : val),
+      z
+        .string()
+        .min(1, 'Select a filing requirement.')
+        .max(100, 'Filing requirement cannot exceed 100 characters.')
+    ),
+    email: z.preprocess((val) => {
+      if (typeof val !== 'string') return undefined;
+      const trimmed = val.trim().toLowerCase();
+      return trimmed.length > 0 ? trimmed : undefined;
+    }, z.string().email('Invalid email format').max(100, 'Email cannot exceed 100 characters.').optional()),
+    entityType: optionalTrimmedString(100),
+    city: optionalTrimmedString(100),
+    filingDetails: optionalTrimmedString(500),
+    countryCode: z.preprocess((val) => {
+      if (typeof val !== 'string') return '+91';
+      const trimmed = val.trim();
+      return trimmed.length > 0 ? trimmed : '+91';
+    }, z.string().max(6).default('+91')),
+    timezone: z.preprocess((val) => {
+      if (typeof val !== 'string') return 'Asia/Kolkata';
+      const trimmed = val.trim();
+      return trimmed.length > 0 ? trimmed : 'Asia/Kolkata';
+    }, z.string().max(50).default('Asia/Kolkata')),
+    route: z.preprocess((val) => {
+      if (typeof val !== 'string') return '/';
+      const trimmed = val.trim();
+      if (!trimmed.startsWith('/') || trimmed.includes('://') || trimmed.startsWith('//')) {
+        return '/';
+      }
+      return trimmed;
+    }, z.string().max(200).default('/')),
+
+    // 17 URL attribution parameters
+    utm_source: optionalTrimmedString(200),
+    utm_medium: optionalTrimmedString(200),
+    utm_campaign: optionalTrimmedString(200),
+    utm_content: optionalTrimmedString(200),
+    utm_term: optionalTrimmedString(200),
+    platform: optionalTrimmedString(200),
+    gclid: optionalTrimmedString(200),
+    fbclid: optionalTrimmedString(200),
+    fbp: optionalTrimmedString(200),
+    fbc: optionalTrimmedString(200),
+    matchtype: optionalTrimmedString(200),
+    network: optionalTrimmedString(200),
+    device: optionalTrimmedString(200),
+    keyword: optionalTrimmedString(200),
+    placement: optionalTrimmedString(200),
+    campaignid: optionalTrimmedString(200),
+    adgroupid: optionalTrimmedString(200),
+  })
+  .strict();
+
+export type SignupInput = z.infer<typeof SignupSchema>;

@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from 'next'
+import { Suspense } from 'react'
 import { Fraunces, IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
 import { ModalProvider } from '@/components/ModalContext'
 import GradientBackground from '@/components/GradientBackground'
 import BrandWordmark from '@/components/BrandWordmark'
 import FloatingBookButton from '@/components/FloatingBookButton'
+import UtmTracker from '@/components/UtmTracker'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -88,6 +90,11 @@ export default function RootLayout({
     <html lang="en" className={`${fraunces.variable} ${ibmPlexSans.variable}`}>
       <body>
         <ModalProvider>
+          {/* UTM Attribution Tracker (Client Component in Suspense) */}
+          <Suspense fallback={null}>
+            <UtmTracker />
+          </Suspense>
+
           {/* 3D Moving ShaderGradient Background (Client Component) */}
           <GradientBackground />
 

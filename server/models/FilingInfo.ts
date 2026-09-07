@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
 export interface IFilingInfo extends Document {
+  _id: mongoose.Types.ObjectId;
   userId: mongoose.Types.ObjectId;
   primaryFilingRequirement: string;
   entityType?: string;
@@ -22,8 +23,7 @@ const FilingInfoSchema: Schema<IFilingInfo> = new Schema(
   }
 );
 
-// Indexes for query performance
-// userId already indexed in schema
+FilingInfoSchema.index({ userId: 1, createdAt: -1 });
 
 const FilingInfo: Model<IFilingInfo> =
   mongoose.models.FilingInfo || mongoose.model<IFilingInfo>('FilingInfo', FilingInfoSchema, 'filing_info');

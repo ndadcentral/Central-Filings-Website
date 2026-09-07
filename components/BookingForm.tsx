@@ -27,6 +27,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
   })
 
   const [errors, setErrors] = useState<ConsultationValidationErrors>({})
+  const [generalError, setGeneralError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [successMessage, setSuccessMessage] = useState('')
@@ -43,6 +44,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
     const { name, value } = e.target
     const updatedData = { ...formData, [name]: value }
     setFormData(updatedData)
+    if (generalError) setGeneralError(null)
 
     if (errors[name as keyof ConsultationValidationErrors]) {
       const fieldErrors = validateConsultationData(updatedData)
@@ -63,6 +65,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
     e.preventDefault()
     if (isSubmitting) return
 
+    setGeneralError(null)
     const validationErrors = validateConsultationData(formData)
     setErrors(validationErrors)
 
@@ -91,17 +94,28 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         if (onSuccess) onSuccess()
       } else if (result.errors) {
         setErrors(result.errors)
+        if (result.errors.fullName) {
+          fullNameRef.current?.focus()
+        } else if (result.errors.phone) {
+          phoneRef.current?.focus()
+        } else if (result.errors.companyName) {
+          companyRef.current?.focus()
+        } else if (result.errors.serviceType) {
+          serviceRef.current?.focus()
+        } else if (result.errors.message) {
+          messageRef.current?.focus()
+        }
+      } else {
+        setGeneralError(result.message || 'Unable to submit your request. Please try again.')
       }
     } catch {
-      setErrors({
-        fullName: 'An unexpected validation error occurred. Please retry.',
-      })
+      setGeneralError('An unexpected error occurred. Please retry.')
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const handleResetDemo = () => {
+  const handleReset = () => {
     setFormData({
       fullName: '',
       phone: '',
@@ -112,6 +126,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
       website: '',
     })
     setErrors({})
+    setGeneralError(null)
     setIsSuccess(false)
     setSuccessMessage('')
   }
@@ -127,11 +142,11 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         <h3 className={styles.successTitle}>Consultation Request Received</h3>
         <p className={styles.successText}>{successMessage}</p>
         <div className={styles.demoNotice}>
-          <strong>CENTRAL FILINGS:</strong> Your consultation request has been queued. A filing specialist will connect within 24 hours to review your requirements and answer your questions.
+          <strong>CENTRAL FILINGS:</strong> Your consultation request has been received. A filing specialist will connect within 24 hours to review your requirements.
         </div>
         <button
           type="button"
-          onClick={handleResetDemo}
+          onClick={handleReset}
           className="btn-primary"
           style={{ width: '100%', marginTop: '16px' }}
         >
@@ -156,6 +171,12 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
           autoComplete="off"
         />
       </div>
+
+      {generalError && (
+        <div className={styles.demoNotice} role="alert" style={{ borderColor: 'var(--coral-500)', color: 'var(--coral-400)' }}>
+          {generalError}
+        </div>
+      )}
 
       {/* Full Name */}
       <div className={styles.fieldGroup}>

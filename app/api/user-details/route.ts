@@ -1,14 +1,23 @@
-import { NextRequest } from 'next/server';
-import connectToDatabase from '@/server/config/db';
-import { UserController } from '@/server/controllers/user.controller';
-import { UserService } from '@/server/services/user.service';
-import { UserRepository } from '@/server/repositories/user.repository';
+import { NextResponse } from 'next/server';
 
-const userRepository = new UserRepository();
-const userService = new UserService(userRepository);
-const userController = new UserController(userService);
+export async function GET() {
+  return NextResponse.json(
+    {
+      success: false,
+      message: 'Endpoint not found',
+      code: 'NOT_FOUND',
+    },
+    { status: 404 }
+  );
+}
 
-export async function GET(req: NextRequest) {
-  await connectToDatabase();
-  return userController.getUserDetails(req);
+export async function POST() {
+  return NextResponse.json(
+    {
+      success: false,
+      message: 'Endpoint not found',
+      code: 'NOT_FOUND',
+    },
+    { status: 404 }
+  );
 }

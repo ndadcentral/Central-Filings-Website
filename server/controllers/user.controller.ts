@@ -1,8 +1,8 @@
+import { NextRequest } from 'next/server';
 import { UserService } from '@/server/services/user.service';
 import { sendSuccess, sendError } from '@/server/utils/response';
-import { SignupSchema, UserDetailsQuerySchema } from '@/server/validators/user.validator';
+import { SignupSchema } from '@/server/validators/user.validator';
 import { HTTP_STATUS, ERROR_CODES } from '@/server/config/constants';
-import { NextRequest } from 'next/server';
 import { logger } from '@/server/utils/logger';
 
 export class UserController {
@@ -10,51 +10,69 @@ export class UserController {
 
   async signup(req: NextRequest) {
     try {
-      const body = await req.json();
+      let body: Record<string, unknown>;
+      try {
+        body = await req.json();
+      } catch {
+        logger.warn('Malformed JSON payload in signup request');
+        return sendError(
+          'We received an invalid request format. Please try submitting again.',
+          ERROR_CODES.VALIDATION_ERROR,
+          HTTP_STATUS.BAD_REQUEST
+        );
+      }
+
+      if (typeof body !== 'object' || body === null || Array.isArray(body)) {
+        return sendError(
+          'We received an invalid request format. Please try submitting again.',
+          ERROR_CODES.VALIDATION_ERROR,
+          HTTP_STATUS.BAD_REQUEST
+        );
+      }
+
+      // Honeypot check at API boundary
+      if (typeof body.website === 'string' && body.website.trim().length > 0) {
+        logger.warn('Honeypot triggered during signup');
+        return sendError(
+          'Please check your details and try again.',
+          ERROR_CODES.VALIDATION_ERROR,
+          HTTP_STATUS.BAD_REQUEST
+        );
+      }
+
+      // Remove honeypot field so .strict() validation passes cleanly
+      if ('website' in body) {
+        delete body.website;
+      }
+
       const validationResult = SignupSchema.safeParse(body);
 
       if (!validationResult.success) {
-        logger.warn({ errors: validationResult.error.format() }, 'Signup validation failed');
-        return sendError('Please check your details and try again. Some information seems to be missing or incorrect.', ERROR_CODES.VALIDATION_ERROR, HTTP_STATUS.BAD_REQUEST, validationResult.error.format());
+        logger.warn('Signup validation failed');
+        return sendError(
+          'Please check your details and try again. Some information seems to be missing or incorrect.',
+          ERROR_CODES.VALIDATION_ERROR,
+          HTTP_STATUS.BAD_REQUEST,
+          validationResult.error.format()
+        );
       }
 
-      const clientIp = req.headers.get('x-forwarded-for') || req.ip || undefined;
       const userAgent = req.headers.get('user-agent') || undefined;
 
-      const result = await this.service.registerUser(validationResult.data, clientIp, userAgent);
+      const result = await this.service.registerUser(validationResult.data, userAgent);
 
-      return sendSuccess(result, 'Your information has been successfully saved. Thank you!', result.status === 'new' ? HTTP_STATUS.CREATED : HTTP_STATUS.OK);
-    } catch (error: any) {
-      if (error instanceof SyntaxError) {
-        logger.warn('Malformed JSON payload in signup request');
-        return sendError('We received an invalid request format. Please try submitting again.', ERROR_CODES.VALIDATION_ERROR, HTTP_STATUS.BAD_REQUEST);
-      }
-      if (error.message === 'USER_ALREADY_EXISTS') {
-        logger.warn('User already exists with this email or phone');
-        return sendError('It looks like you already have an account with this email or phone number.', ERROR_CODES.USER_ALREADY_EXISTS, HTTP_STATUS.BAD_REQUEST);
-      }
-      logger.error(error, 'Error during signup');
-      return sendError(error.message || 'Oops! Something went wrong on our end. Please try again later.', ERROR_CODES.UNKNOWN_ERROR, HTTP_STATUS.INTERNAL_SERVER_ERROR);
-    }
-  }
-
-  async getUserDetails(req: NextRequest) {
-    try {
-      const searchParams = req.nextUrl.searchParams;
-      const query = Object.fromEntries(searchParams.entries());
-      
-      const validationResult = UserDetailsQuerySchema.safeParse(query);
-
-      if (!validationResult.success) {
-         logger.warn({ errors: validationResult.error.format() }, 'User details validation failed');
-         return sendError('Please check the selected date range and try again.', ERROR_CODES.VALIDATION_ERROR, HTTP_STATUS.BAD_REQUEST, validationResult.error.format());
-      }
-
-      const result = await this.service.getUserDetails(validationResult.data);
-      return sendSuccess(result, 'User details loaded successfully.');
-    } catch (error: any) {
-      logger.error(error, 'Error fetching user details');
-      return sendError(error.message || 'Oops! Something went wrong while loading the data. Please try again later.', ERROR_CODES.UNKNOWN_ERROR, HTTP_STATUS.INTERNAL_SERVER_ERROR);
+      return sendSuccess(
+        { status: result.status },
+        'Your information has been successfully saved. Thank you!',
+        result.status === 'new' ? HTTP_STATUS.CREATED : HTTP_STATUS.OK
+      );
+    } catch (error) {
+      logger.error('Error during signup execution');
+      return sendError(
+        'Oops! Something went wrong on our end. Please try again later.',
+        ERROR_CODES.DATABASE_ERROR,
+        HTTP_STATUS.INTERNAL_SERVER_ERROR
+      );
     }
   }
 }

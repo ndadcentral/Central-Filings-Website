@@ -1,6 +1,7 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document, Model } from 'mongoose';
 
 export interface IUser extends Document {
+  _id: mongoose.Types.ObjectId;
   name: string;
   email?: string;
   phone: string;
@@ -13,21 +14,27 @@ export interface IUser extends Document {
   updatedAt: Date;
 }
 
-const UserSchema: Schema = new Schema(
+const UserSchema: Schema<IUser> = new Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, sparse: true, unique: true },
-    phone: { type: String, required: true, unique: true },
-    companyName: { type: String, required: true },
-    city: { type: String, required: false },
-    countryCode: { type: String, default: '+91' },
-    timezone: { type: String, default: 'Asia/Kolkata' },
+    name: { type: String, required: true, trim: true },
+    email: { type: String, sparse: true, unique: true, trim: true, lowercase: true },
+    phone: { type: String, required: true, unique: true, trim: true },
+    companyName: { type: String, required: true, trim: true },
+    city: { type: String, required: false, trim: true },
+    countryCode: { type: String, default: '+91', trim: true },
+    timezone: { type: String, default: 'Asia/Kolkata', trim: true },
     status: { type: String, enum: ['ACTIVE', 'DELETED', 'ONHOLD'], default: 'ACTIVE' },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    autoIndex: process.env.NODE_ENV !== 'production',
+  }
 );
 
-// Indexes for fast querying (e.g., date ranges, email lookups)
+// Indexes for query performance
 UserSchema.index({ createdAt: -1 });
 
-export default mongoose.models.User || mongoose.model<IUser>('User', UserSchema);
+const User: Model<IUser> =
+  mongoose.models.User || mongoose.model<IUser>('User', UserSchema, 'users');
+
+export default User;
